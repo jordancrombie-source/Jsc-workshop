@@ -164,6 +164,10 @@ nav a:hover{color:var(--green)}
   .brand-copy span{display:none}
   nav a:not(:first-child):not(:last-child){display:none}
 }
+@media(max-width:440px){
+  .mast{gap:14px}
+  nav a:not(:last-child){display:none}
+}
 
 .button{
   display:inline-flex;
@@ -301,7 +305,6 @@ nav a:hover{color:var(--green)}
   border-right:18px solid #D8C9B3;
 }
 .hero-card .route-id{
-  position:relative;
   display:block;
   font-family:var(--mono);
   color:var(--rust);
@@ -473,7 +476,7 @@ nav a:hover{color:var(--green)}
 }
 .process-step{position:relative;padding-right:22px}
 .process-step:not(:last-child)::after{
-  content:"→";
+  content:"→" / "";
   position:absolute;
   right:-4px;
   top:22px;
@@ -538,6 +541,9 @@ nav a:hover{color:var(--green)}
   .example-grid{grid-template-columns:1fr}
   .example-copy{padding-left:0}
 }
+@media(max-width:560px){
+  .demo-stats{grid-template-columns:repeat(2,1fr)}
+}
 
 .contact{padding:18px 0 0}
 .contact-panel{
@@ -589,6 +595,7 @@ dialog.jobsheet{
   background:
     radial-gradient(circle at 8% 10%,rgba(105,84,53,.08),transparent 20rem),
     var(--paper-card);
+  color:var(--ink);
   padding:0;box-shadow:0 18px 44px rgba(50,38,24,.3);
 }
 dialog.jobsheet::backdrop{background:rgba(23,27,24,.45);backdrop-filter:blur(2px)}
@@ -612,7 +619,7 @@ dialog.jobsheet::backdrop{background:rgba(23,27,24,.45);backdrop-filter:blur(2px
 .jobsheet-actions{display:flex;gap:12px;margin-top:22px;flex-wrap:wrap;align-items:center}
 .jobsheet .close-x{
   position:absolute;top:12px;right:12px;width:34px;height:34px;
-  border:1px solid var(--ink);background:var(--paper-light);
+  border:1px solid var(--ink);background:var(--paper-light);color:var(--ink);
   font-family:var(--mono);font-size:.9rem;cursor:pointer;
 }
 .jobsheet .mailto-alt{font-family:var(--mono);font-size:.62rem;color:var(--muted)}
@@ -682,6 +689,7 @@ nav a:hover::after{width:100%}
   width:54px;height:13px;opacity:.7;
   background:repeating-linear-gradient(90deg,var(--ink) 0 1.5px,transparent 1.5px 3.5px,var(--ink) 3.5px 6.5px,transparent 6.5px 8px);
 }
+.hero-card .route-id::after{top:42px;right:26px}
 
 /* stamps get a touch of ink unevenness */
 .stamp{box-shadow:inset 0 0 6px rgba(23,56,47,.18)}
@@ -722,8 +730,9 @@ nav a:hover::after{width:100%}
   }
   body::before{opacity:.18}
   header{background:rgba(24,28,24,.92)}
-  .button:hover{background:#A8CDBB}
+  .button:not(.outline):hover{background:#A8CDBB}
   [data-capacity="open"] .status-dot{background:#5FBF8A}
+  [data-capacity="closed"] .status-dot{background:var(--rust)}
   .status-sign{box-shadow:2px 2px 0 rgba(0,0,0,.4)}
   .route-card,.hero-card{border-color:#3A4039;box-shadow:0 3px 9px rgba(0,0,0,.35)}
   dialog.jobsheet{border-color:#3A4039}
@@ -761,10 +770,13 @@ nav a:hover::after{width:100%}
   .js .route-card,.js .process-step,.js .demo-panel,.js .contact-panel{opacity:1;translate:0 0;transition:none}
   .route-card,.hero-card,.demo-panel,.contact-panel,.process-step,.tool-card{break-inside:avoid;box-shadow:none}
   .cardrow .route-card,.hero-card,.status-sign{transform:none}
+  .contact-panel{background:transparent}
+  .route-card,.hero-card{border-color:var(--rule)}
+  .route-card::after,.hero-card::after{border-right-color:var(--soft-rule)}
 }
 </style>
 </head>
-<body>
+<body data-capacity="open">
 
 <a class="skip-link" href="#main">Skip to content</a>
 
@@ -797,15 +809,15 @@ nav a:hover::after{width:100%}
 
         <div class="hero-proof">
           <div class="proof-item">
-            <span class="proof-icon">✓</span>
+            <span class="proof-icon" aria-hidden="true">✓</span>
             <span>11 years in manufacturing</span>
           </div>
           <div class="proof-item">
-            <span class="proof-icon">◇</span>
+            <span class="proof-icon" aria-hidden="true">◇</span>
             <span>Fixed price projects</span>
           </div>
           <div class="proof-item">
-            <span class="proof-icon">⌁</span>
+            <span class="proof-icon" aria-hidden="true">⌁</span>
             <span>Tools that fit your operation</span>
           </div>
         </div>
@@ -923,14 +935,14 @@ nav a:hover::after{width:100%}
     <div class="wrap">
       <div class="section-heading">
         <span class="num">02</span>
-        <span class="section-label">How it works</span>
+        <h2 class="section-label">How it works</h2>
       </div>
 
       <div class="process-row">
         <article class="process-step">
           <div class="process-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"></circle><path d="m20.5 20.5-4.4-4.4"></path></svg></div>
           <h3>Understand</h3>
-          <p>I spend a day in your operation, listen to your team and map the friction.</p>
+          <p>I spend a day in your operation, listen to the people doing the work and map the friction.</p>
         </article>
         <article class="process-step">
           <div class="process-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="2.5"></rect><path d="m8 12.5 3 3 5.5-6.5"></path></svg></div>
@@ -963,7 +975,7 @@ nav a:hover::after{width:100%}
         <p class="tiny-label" style="margin-top:24px">A short demo film is on its way. Until then, ask and I'll walk you through the real thing.</p>
       </div>
 
-      <div class="demo-panel" aria-label="Training and cover planning interface preview">
+      <div class="demo-panel" role="img" aria-label="Training and cover planning interface preview">
         <div class="demo-sidebar">
           <div class="demo-dot"></div>
           <div class="demo-dot"></div>
@@ -997,7 +1009,7 @@ nav a:hover::after{width:100%}
     <div class="wrap">
       <div class="section-heading">
         <span class="num">04</span>
-        <span class="section-label">From the workshop</span>
+        <h2 class="section-label">From the workshop</h2>
       </div>
       <div class="tool-card">
         <div>
@@ -1007,7 +1019,7 @@ nav a:hover::after{width:100%}
           <p>It runs entirely in your browser. Turn your Wi-Fi off halfway through and it carries on working. There's example data built in, so you can watch every step before your own file goes anywhere near it.</p>
           <a class="button outline" href="https://pseudonymiser.jscworkshop.co.uk/" target="_blank" rel="noopener">Try it yourself →</a>
         </div>
-        <div class="tool-visual" aria-label="Before and after example">
+        <div class="tool-visual" role="img" aria-label="Before and after example">
           <div class="cap">Before → After</div>
           <div class="rowline"><span class="old">Karen Fletcher</span><span class="new">Sue Baker</span></div>
           <div class="rowline"><span class="old">QQ345678A</span><span class="new">TR812409C</span></div>
@@ -1027,12 +1039,12 @@ nav a:hover::after{width:100%}
         <p class="status-note" style="display:none"></p>
       </div>
       <div>
-        <p>No pitch. No jargon. Just a chat about the job that's eating your time, and an honest answer on whether I can help.</p>
+        <p class="contact-pitch">No pitch. No jargon. Just a chat about the job that's eating your time, and an honest answer on whether I can help.</p>
       </div>
       <div class="contact-details">
-        <div class="contact-row"><span class="contact-icon">✉</span><span>hello@example.co.uk</span></div>
-        <div class="contact-row"><span class="contact-icon">in</span><span>/in/jordan-crombie</span></div>
-        <div class="contact-row"><span class="contact-icon">☎</span><span>07800 123456</span></div>
+        <div class="contact-row"><span class="contact-icon" aria-hidden="true">✉</span><span>hello@example.co.uk</span></div>
+        <div class="contact-row"><span class="contact-icon" aria-hidden="true">in</span><span>/in/jordan-crombie</span></div>
+        <div class="contact-row"><span class="contact-icon" aria-hidden="true">☎</span><span>07800 123456</span></div>
       </div>
       <div class="contact-stamp">
         <div class="stamp"><span>Built around<b>JC</b>how you work</span></div>
@@ -1084,7 +1096,7 @@ nav a:hover::after{width:100%}
 
 <script>
 /* ============================================================
-   CAPACITY SWITCH — edit this one line as your workload changes:
+   CAPACITY SWITCH. Edit this one line as your workload changes:
    "open"      = taking new projects
    "waitlist"  = busy, register interest
    "closed"    = books closed until the date below
@@ -1103,7 +1115,7 @@ const STATES = {
     sign: "Busy building · waitlist open",
     heroBtn: "Register your interest →",
     contactP: "I'm mid-build for another business right now, so new projects join a short waitlist. Tell me about the job anyway and I'll come back to you with an honest timeline.",
-    note: "Current wait for a discovery day: ask, it changes."
+    note: "Current wait for a day in your operation: ask, it changes."
   },
   closed: {
     sign: "Books closed",
@@ -1117,7 +1129,7 @@ const st = STATES[CAPACITY];
 document.querySelectorAll(".status-sign .sign-text").forEach(e => e.textContent = st.sign);
 const heroBtn = document.querySelector(".hero .button");
 if (heroBtn) heroBtn.textContent = st.heroBtn;
-const contactP = document.querySelector(".contact-panel p");
+const contactP = document.querySelector(".contact-pitch");
 if (contactP) contactP.textContent = st.contactP;
 const noteEl = document.querySelector(".status-note");
 if (noteEl) { noteEl.textContent = st.note; noteEl.style.display = st.note ? "block" : "none"; }
