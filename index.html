@@ -1,0 +1,1180 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="JSC Workshop builds practical software for real operations, shaped around how people actually work.">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#F3EEE4">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#181C18">
+<title>JSC Workshop · Software built around how you work</title>
+<link rel="canonical" href="https://jscworkshop.co.uk/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23F3EEE4'/%3E%3Crect x='4' y='4' width='56' height='56' fill='none' stroke='%23171B18' stroke-width='4'/%3E%3Ctext x='32' y='43' font-family='Courier New, monospace' font-size='26' font-weight='bold' text-anchor='middle' fill='%23171B18'%3EJC%3C/text%3E%3C/svg%3E">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="JSC Workshop">
+<meta property="og:title" content="JSC Workshop · Software built around how you work">
+<meta property="og:description" content="Custom software for the everyday jobs that slow the day down. Built around how you actually work, not the other way round.">
+<meta property="og:url" content="https://jscworkshop.co.uk/">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "JSC Workshop",
+  "url": "https://jscworkshop.co.uk/",
+  "description": "Custom software for the everyday jobs that slow the day down, built for operations from one person to a full shop floor.",
+  "areaServed": "United Kingdom",
+  "founder": { "@type": "Person", "name": "Jordan Crombie" }
+}
+</script>
+
+<style>
+:root{
+  --paper:#F3EEE4;
+  --paper-light:#FAF7F0;
+  --paper-card:#EFE6D5;
+  --ink:#171B18;
+  --muted:#60655E;
+  --green:#234F43;
+  --green-dark:#17382F;
+  --rust:#A45026;
+  --rule:#BDB5A8;
+  --soft-rule:#D7D0C3;
+  --stamp:#17382F;
+  --white:#FFFDF8;
+  --shadow:0 10px 26px rgba(50,38,24,.12);
+  --display:'Barlow Condensed',sans-serif;
+  --mono:'IBM Plex Mono',monospace;
+  --body:'Source Serif 4',Georgia,serif;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:82px}
+body{
+  color:var(--ink);
+  background:
+    radial-gradient(circle at 15% -5%,rgba(255,255,255,.8),transparent 24rem),
+    var(--paper);
+  font-family:var(--body);
+  line-height:1.55;
+  font-size:1rem;
+}
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:-1;
+  opacity:.32;
+  background-image:
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.1'/%3E%3C/svg%3E");
+}
+a{color:inherit}
+button,a{touch-action:manipulation}
+img{display:block;max-width:100%}
+::selection{background:var(--green);color:var(--white)}
+a:focus-visible,button:focus-visible{outline:3px solid var(--rust);outline-offset:4px}
+.wrap{width:min(1180px,calc(100% - 36px));margin-inline:auto}
+.skip-link{position:absolute;left:16px;top:-60px;background:var(--ink);color:var(--paper);padding:10px 14px;z-index:50}
+.skip-link:focus{top:14px}
+
+h1,h2,h3{font-family:var(--display);text-transform:uppercase;letter-spacing:.01em;line-height:.95}
+.kicker,.section-label,.tiny-label{
+  font-family:var(--mono);
+  text-transform:uppercase;
+  letter-spacing:.1em;
+}
+.kicker{display:block;font-size:.72rem;color:var(--green);font-weight:600}
+.section-label{font-size:.68rem;color:var(--green);font-weight:600}
+.tiny-label{font-size:.64rem;color:var(--muted)}
+
+header{
+  position:sticky;
+  top:0;
+  z-index:20;
+  background:rgba(243,238,228,.92);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--rule);
+}
+.mast{
+  min-height:82px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:28px;
+}
+.brand{
+  display:flex;
+  align-items:center;
+  gap:16px;
+  text-decoration:none;
+}
+.brand-mark{
+  width:58px;
+  aspect-ratio:1;
+  position:relative;
+  display:grid;
+  place-items:center;
+  border:2px solid var(--ink);
+  font-family:var(--mono);
+  font-weight:600;
+  font-size:1.35rem;
+  background:var(--paper-light);
+}
+.brand-mark::before,.brand-mark::after{
+  content:"";
+  position:absolute;
+  width:5px;height:5px;
+  border:1px solid var(--ink);
+  background:var(--paper);
+}
+.brand-mark::before{left:4px;top:4px}
+.brand-mark::after{right:4px;bottom:4px}
+.brand-copy strong{
+  display:block;
+  font-family:var(--display);
+  font-size:1.35rem;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+}
+.brand-copy span{
+  display:block;
+  margin-top:2px;
+  font-family:var(--mono);
+  font-size:.61rem;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+}
+nav{display:flex;gap:34px;align-items:center}
+nav a{
+  font-family:var(--mono);
+  font-size:.68rem;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+  text-decoration:none;
+  font-weight:600;
+}
+nav a:hover{color:var(--green)}
+@media(max-width:760px){
+  .brand-copy span{display:none}
+  nav a:not(:first-child):not(:last-child){display:none}
+}
+
+.button{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:48px;
+  padding:0 20px;
+  background:var(--green);
+  color:var(--paper);
+  border:1px solid var(--green);
+  font-family:var(--mono);
+  font-size:.7rem;
+  font-weight:600;
+  letter-spacing:.07em;
+  text-transform:uppercase;
+  text-decoration:none;
+}
+.button:hover{background:var(--green-dark)}
+.button.outline{background:transparent;color:var(--ink);border-color:var(--ink)}
+.section-rule{border-top:1px solid var(--rule)}
+.section-heading{
+  display:flex;
+  gap:12px;
+  align-items:center;
+  margin-bottom:26px;
+}
+.section-heading .num{color:var(--rust);font-family:var(--mono);font-size:.72rem;font-weight:600}
+
+.hero{padding:64px 0 48px}
+.hero-grid{
+  display:grid;
+  grid-template-columns:1.05fr .95fr;
+  gap:56px;
+  align-items:center;
+}
+.hero-copy{
+  position:relative;
+  padding:42px 30px 34px 38px;
+}
+.hero-copy::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:12px;
+  bottom:18px;
+  width:1px;
+  background:var(--green);
+}
+.hero h1{
+  font-size:clamp(3.5rem,7vw,6.2rem);
+  max-width:12ch;
+  margin:20px 0 28px;
+}
+.hero h1 span{color:var(--green)}
+.hero .lede{
+  max-width:58ch;
+  font-size:1.1rem;
+  color:var(--ink);
+  font-family:var(--mono);
+  line-height:1.65;
+}
+.hero-proof{
+  display:flex;
+  flex-wrap:wrap;
+  gap:0;
+  margin:28px 0;
+}
+.proof-item{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:0 18px;
+  border-right:1px solid var(--rule);
+  min-height:42px;
+}
+.proof-item:first-child{padding-left:0}
+.proof-item:last-child{border-right:0}
+.proof-icon{
+  width:24px;
+  aspect-ratio:1;
+  border:1px solid var(--rust);
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  font-family:var(--mono);
+  font-size:.65rem;
+}
+.proof-item span{
+  font-family:var(--mono);
+  font-size:.65rem;
+  text-transform:uppercase;
+  font-weight:600;
+  max-width:15ch;
+}
+@media(max-width:600px){
+  .hero-copy{padding-left:20px}
+  .hero-proof{display:grid;grid-template-columns:1fr;gap:10px}
+  .proof-item{padding:0;border-right:0}
+}
+
+/* hero right column: your blank route card */
+.hero-visual{display:flex;justify-content:center}
+.hero-card{
+  position:relative;
+  display:block;
+  width:min(440px,100%);
+  padding:42px 30px 26px;
+  background:
+    radial-gradient(circle at 8% 15%,rgba(105,84,53,.08),transparent 22rem),
+    var(--paper-card);
+  border:1px solid #C9BDA8;
+  box-shadow:var(--shadow);
+  text-decoration:none;
+  transform:rotate(1.4deg);
+  transition:transform .25s ease, box-shadow .25s ease;
+}
+.hero-card:hover{transform:rotate(0) translateY(-6px);box-shadow:0 14px 30px rgba(64,49,31,.22)}
+.hero-card::before{
+  content:"";
+  position:absolute;
+  top:10px;left:50%;
+  width:16px;height:16px;
+  transform:translateX(-50%);
+  border-radius:50%;
+  border:3px solid #8F7758;
+  background:var(--paper);
+  box-shadow:inset 0 0 0 2px rgba(255,255,255,.7);
+}
+.hero-card::after{
+  content:"";
+  position:absolute;
+  right:0;bottom:0;
+  border-top:18px solid transparent;
+  border-left:18px solid transparent;
+  border-right:18px solid #D8C9B3;
+}
+.hero-card .route-id{
+  position:relative;
+  display:block;
+  font-family:var(--mono);
+  color:var(--rust);
+  font-size:.63rem;
+  text-transform:uppercase;
+  font-weight:600;
+  padding-bottom:10px;
+  border-bottom:1px dotted #A99D8C;
+}
+.hc-title{
+  display:block;
+  font-family:var(--display);
+  text-transform:uppercase;
+  font-size:1.9rem;
+  line-height:.95;
+  color:var(--ink);
+  margin:18px 0 4px;
+}
+.hc-hint{
+  display:block;
+  font-family:var(--mono);
+  font-size:.66rem;
+  color:var(--muted);
+  margin-bottom:4px;
+}
+.hc-field{display:block;padding:15px 0 20px;border-bottom:1px dotted #A99D8C}
+.hc-field strong{
+  display:block;
+  font-family:var(--mono);
+  font-size:.62rem;
+  text-transform:uppercase;
+  color:var(--rust);
+  font-weight:600;
+}
+.hc-rule{display:block;height:26px;border-bottom:1px dotted #A99D8C}
+.hc-opts{display:flex;flex-wrap:wrap;gap:8px 16px;margin-top:12px;font-family:var(--mono);font-size:.63rem;color:var(--ink)}
+.hc-opt::before{
+  content:"";
+  display:inline-block;
+  width:10px;height:10px;
+  border:1px solid var(--ink);
+  background:var(--paper-light);
+  margin-right:7px;
+  vertical-align:-1px;
+}
+.hc-foot{display:flex;justify-content:space-between;align-items:end;gap:14px;margin-top:22px}
+.hc-cta{
+  font-family:var(--mono);
+  font-size:.66rem;
+  font-weight:600;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+  color:var(--green);
+}
+@media(max-width:1020px){
+  .hero-grid{display:block;max-width:920px}
+  .hero-visual{display:none}
+}
+
+.jobs{padding:28px 0 26px}
+.jobs-grid{
+  display:grid;
+  grid-template-columns:220px 1fr;
+  gap:28px;
+}
+.jobs-intro{padding:18px 10px 0 32px}
+.jobs-intro h2{font-size:2.5rem;max-width:8ch;margin:22px 0}
+.jobs-intro p{max-width:18ch}
+.more-link{
+  display:inline-block;
+  margin-top:50px;
+  font-family:var(--mono);
+  font-size:.68rem;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+  color:var(--green);
+  text-decoration:none;
+  font-weight:600;
+}
+.cardrow{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.route-card{
+  position:relative;
+  min-height:350px;
+  padding:34px 22px 24px;
+  background:
+    radial-gradient(circle at 8% 15%,rgba(105,84,53,.08),transparent 22rem),
+    var(--paper-card);
+  border:1px solid #C9BDA8;
+  box-shadow:0 3px 9px rgba(64,49,31,.14);
+}
+.route-card::before{
+  content:"";
+  position:absolute;
+  top:8px;left:50%;
+  width:15px;height:15px;
+  transform:translateX(-50%);
+  border-radius:50%;
+  border:3px solid #8F7758;
+  background:var(--paper);
+  box-shadow:inset 0 0 0 2px rgba(255,255,255,.7);
+}
+.route-card::after{
+  content:"";
+  position:absolute;
+  right:0;bottom:0;
+  border-top:18px solid transparent;
+  border-left:18px solid transparent;
+  border-right:18px solid #D8C9B3;
+}
+.route-card .route-id{
+  font-family:var(--mono);
+  color:var(--rust);
+  font-size:.63rem;
+  text-transform:uppercase;
+  font-weight:600;
+  padding-bottom:10px;
+  border-bottom:1px dotted #A99D8C;
+}
+.route-card h3{
+  font-size:1.7rem;
+  margin:18px 0 18px;
+  padding-bottom:14px;
+  border-bottom:1px dotted #A99D8C;
+}
+.route-block{
+  padding:11px 0;
+  border-bottom:1px dotted #A99D8C;
+}
+.route-block strong{
+  display:block;
+  font-family:var(--mono);
+  font-size:.62rem;
+  text-transform:uppercase;
+  color:var(--rust);
+  margin-bottom:6px;
+}
+.route-block.after strong{color:var(--green)}
+.route-block p{font-family:var(--mono);font-size:.72rem;line-height:1.55;color:var(--ink)}
+.route-footer{
+  display:flex;
+  justify-content:space-between;
+  align-items:end;
+  gap:14px;
+  margin-top:20px;
+}
+.saving strong{display:block;font-family:var(--mono);font-size:.6rem;text-transform:uppercase}
+.saving span{display:block;margin-top:4px;font-family:var(--mono);font-size:.68rem;font-weight:600}
+.stamp{
+  width:68px;aspect-ratio:1;border:1.5px solid var(--stamp);border-radius:50%;
+  display:grid;place-items:center;text-align:center;
+  color:var(--stamp);font-family:var(--mono);text-transform:uppercase;font-size:.52rem;
+  transform:rotate(-7deg);
+}
+.stamp b{font-size:.82rem;display:block}
+@media(max-width:900px){
+  .jobs-grid{grid-template-columns:1fr}
+  .jobs-intro{padding-left:0}
+  .jobs-intro h2{max-width:none}
+  .jobs-intro p{max-width:50ch}
+  .more-link{margin-top:22px}
+  .cardrow{grid-template-columns:1fr}
+}
+
+.process{padding:20px 0 28px}
+.process-row{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:22px;
+}
+.process-step{position:relative;padding-right:22px}
+.process-step:not(:last-child)::after{
+  content:"→";
+  position:absolute;
+  right:-4px;
+  top:22px;
+  font-family:var(--mono);
+  font-size:1.4rem;
+}
+.process-icon{
+  width:54px;height:54px;
+  display:grid;place-items:center;
+  border:1px solid var(--green);
+  border-radius:50%;
+  margin-bottom:16px;
+  color:var(--green);
+  background:rgba(35,79,67,.05);
+}
+.process-icon svg{width:27px;height:27px;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.process-step h3{
+  font-size:1rem;
+  font-family:var(--mono);
+  letter-spacing:0;
+  margin-bottom:8px;
+}
+.process-step p{font-size:.9rem}
+@media(max-width:800px){
+  .process-row{grid-template-columns:1fr 1fr}
+  .process-step::after{display:none}
+}
+@media(max-width:520px){.process-row{grid-template-columns:1fr}}
+
+.example{padding:22px 0 28px}
+.example-grid{display:grid;grid-template-columns:250px 1fr;gap:24px}
+.example-copy{padding:20px 0 0 32px}
+.example-copy h2{font-size:2.3rem;margin:18px 0}
+.example-copy p{max-width:28ch}
+.demo-panel{
+  display:grid;
+  grid-template-columns:72px 1fr;
+  min-height:300px;
+  border:1px solid var(--rule);
+  background:var(--paper-light);
+  box-shadow:0 4px 12px rgba(50,38,24,.08);
+}
+.demo-sidebar{background:var(--green-dark);padding:22px 14px}
+.demo-dot{width:10px;height:10px;border:1px solid white;margin:0 auto 22px}
+.demo-main{padding:18px}
+.demo-title{
+  font-family:var(--mono);
+  font-size:.72rem;
+  text-transform:uppercase;
+  margin-bottom:14px;
+}
+.demo-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.stat-box{border:1px solid var(--soft-rule);padding:12px;background:white}
+.stat-box span{display:block;font-family:var(--mono);font-size:.55rem;text-transform:uppercase;color:var(--muted)}
+.stat-box strong{font-family:var(--display);font-size:2rem}
+.matrix{display:grid;grid-template-columns:1.3fr repeat(7,1fr);margin-top:14px;border-top:1px solid var(--soft-rule);border-left:1px solid var(--soft-rule)}
+.matrix div{min-height:34px;border-right:1px solid var(--soft-rule);border-bottom:1px solid var(--soft-rule);display:grid;place-items:center;font-family:var(--mono);font-size:.58rem}
+.matrix .line{justify-content:start;padding-left:10px;font-weight:600}
+.dot{width:11px;height:11px;border-radius:50%;background:#66877B}
+.dot.warn{background:#B67B24}
+@media(max-width:840px){
+  .example-grid{grid-template-columns:1fr}
+  .example-copy{padding-left:0}
+}
+
+.contact{padding:18px 0 0}
+.contact-panel{
+  display:grid;
+  grid-template-columns:1.15fr .85fr 220px 130px;
+  gap:34px;
+  align-items:center;
+  padding:28px 34px;
+  background:rgba(239,230,213,.8);
+  border:1px solid var(--rule);
+}
+.contact-panel h2{font-size:2.2rem;max-width:12ch}
+.contact-panel p{max-width:36ch}
+.contact-details{
+  display:grid;
+  gap:12px;
+  font-family:var(--mono);
+  font-size:.68rem;
+}
+.contact-row{display:flex;gap:12px;align-items:center}
+.contact-icon{width:28px;height:28px;border:1px solid var(--green);border-radius:50%;display:grid;place-items:center}
+.contact-stamp{justify-self:end}
+.contact-stamp .stamp{width:110px;font-size:.62rem}
+.contact-stamp .stamp b{font-size:1.8rem}
+@media(max-width:980px){
+  .contact-panel{grid-template-columns:1fr}
+  .contact-stamp{justify-self:start}
+}
+
+footer{padding:14px 0 24px}
+.footer-row{
+  display:flex;
+  justify-content:space-between;
+  gap:16px;
+  flex-wrap:wrap;
+  font-family:var(--mono);
+  font-size:.58rem;
+  text-transform:uppercase;
+  letter-spacing:.06em;
+}
+
+
+
+
+/* ---- job sheet dialog ---- */
+dialog.jobsheet{
+  width:min(560px,calc(100% - 32px));
+  border:1px solid #C9BDA8;
+  background:
+    radial-gradient(circle at 8% 10%,rgba(105,84,53,.08),transparent 20rem),
+    var(--paper-card);
+  padding:0;box-shadow:0 18px 44px rgba(50,38,24,.3);
+}
+dialog.jobsheet::backdrop{background:rgba(23,27,24,.45);backdrop-filter:blur(2px)}
+.jobsheet-inner{position:relative;padding:36px 26px 26px}
+.jobsheet-inner::before{
+  content:"";position:absolute;top:9px;left:50%;width:15px;height:15px;
+  transform:translateX(-50%);border-radius:50%;
+  border:3px solid #8F7758;background:var(--paper);
+}
+.jobsheet .route-id{display:block;font-family:var(--mono);color:var(--rust);font-size:.63rem;text-transform:uppercase;font-weight:600;padding-bottom:10px;border-bottom:1px dotted #A99D8C}
+.jobsheet h3{font-family:var(--display);text-transform:uppercase;font-size:1.6rem;margin:16px 0 4px}
+.jobsheet .hint{font-size:.85rem;color:var(--muted);margin-bottom:18px}
+.jobsheet label{display:block;font-family:var(--mono);font-size:.62rem;text-transform:uppercase;color:var(--rust);font-weight:600;margin:14px 0 6px}
+.jobsheet input,.jobsheet textarea,.jobsheet select{
+  width:100%;padding:11px 12px;
+  border:1px solid #A99D8C;background:var(--paper-light);
+  font-family:var(--mono);font-size:.8rem;color:var(--ink);
+}
+.jobsheet textarea{min-height:110px;resize:vertical}
+.jobsheet input:focus,.jobsheet textarea:focus,.jobsheet select:focus{outline:3px solid var(--rust);outline-offset:2px}
+.jobsheet-actions{display:flex;gap:12px;margin-top:22px;flex-wrap:wrap;align-items:center}
+.jobsheet .close-x{
+  position:absolute;top:12px;right:12px;width:34px;height:34px;
+  border:1px solid var(--ink);background:var(--paper-light);
+  font-family:var(--mono);font-size:.9rem;cursor:pointer;
+}
+.jobsheet .mailto-alt{font-family:var(--mono);font-size:.62rem;color:var(--muted)}
+
+
+/* ---- from the workshop (free tool) ---- */
+.workshop-tool .tool-card{
+  border:1px solid var(--rule);background:var(--paper-light);
+  padding:30px 28px;display:grid;grid-template-columns:1.2fr .8fr;gap:32px;align-items:center;position:relative;
+}
+.workshop-tool .tool-card::before{content:"";position:absolute;top:12px;right:14px;width:13px;height:13px;border-radius:50%;background:var(--paper);border:2px solid var(--rule)}
+.workshop-tool h3{font-family:var(--display);text-transform:uppercase;font-size:1.5rem;margin-bottom:10px}
+.workshop-tool p{margin-bottom:12px;max-width:52ch}
+.workshop-tool .offline{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:.65rem;text-transform:uppercase;letter-spacing:.1em;color:var(--green);border:1.5px solid var(--green);padding:7px 11px;margin-bottom:16px}
+.workshop-tool .offline::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--green)}
+.tool-visual{border:1px solid var(--rule);background:var(--paper);padding:18px;font-family:var(--mono);font-size:.72rem}
+.tool-visual .rowline{display:flex;justify-content:space-between;padding:7px 4px;border-bottom:1px dotted var(--rule)}
+.tool-visual .rowline .old{color:var(--muted);text-decoration:line-through;text-decoration-color:var(--rust)}
+.tool-visual .rowline .new{color:var(--green);font-weight:bold}
+.tool-visual .cap{text-transform:uppercase;letter-spacing:.1em;font-size:.6rem;color:var(--rust);margin-bottom:8px}
+@media(max-width:760px){.workshop-tool .tool-card{grid-template-columns:1fr}}
+
+/* ---- capacity status sign ---- */
+.status-sign{
+  display:inline-flex;align-items:center;gap:10px;
+  margin-bottom:16px;padding:9px 14px;
+  border:1.5px solid var(--ink);background:var(--paper-light);
+  font-family:var(--mono);font-size:.66rem;font-weight:600;
+  text-transform:uppercase;letter-spacing:.08em;
+  box-shadow:2px 2px 0 rgba(23,27,24,.18);
+  transform:rotate(-1deg);
+}
+.status-dot{width:9px;height:9px;border-radius:50%}
+[data-capacity="open"] .status-dot{background:#2E7D4F}
+[data-capacity="waitlist"] .status-dot{background:#B67B24}
+[data-capacity="closed"] .status-dot{background:#A45026}
+.status-note{font-family:var(--mono);font-size:.7rem;color:var(--muted);margin-top:12px;max-width:36ch}
+
+/* ---- flair ---- */
+nav a{position:relative}
+nav a::after{content:"";position:absolute;left:0;bottom:-6px;height:2px;width:0;background:var(--rust);transition:width .22s ease}
+nav a:hover::after{width:100%}
+
+.button{transition:transform .18s ease, background .18s ease}
+.button:hover{transform:translateY(-2px)}
+
+/* hero margin: drafting-ruler tick marks */
+.hero-copy::after{
+  content:"";
+  position:absolute;
+  left:0;top:12px;bottom:18px;width:9px;
+  background:repeating-linear-gradient(180deg,var(--green) 0 1px,transparent 1px 16px);
+  opacity:.45;
+}
+
+/* route cards: pinned-up tilt, straighten + lift on hover */
+.route-card{transition:transform .25s ease, box-shadow .25s ease}
+.cardrow .route-card:nth-child(1){transform:rotate(-.7deg)}
+.cardrow .route-card:nth-child(2){transform:rotate(.5deg) translateY(4px)}
+.cardrow .route-card:nth-child(3){transform:rotate(-.4deg)}
+.cardrow .route-card:hover{transform:rotate(0) translateY(-6px);box-shadow:0 12px 24px rgba(64,49,31,.2)}
+
+/* barcode detail on each route card */
+.route-card .route-id::after,.hero-card .route-id::after{
+  content:"";
+  position:absolute;top:32px;right:20px;
+  width:54px;height:13px;opacity:.7;
+  background:repeating-linear-gradient(90deg,var(--ink) 0 1.5px,transparent 1.5px 3.5px,var(--ink) 3.5px 6.5px,transparent 6.5px 8px);
+}
+
+/* stamps get a touch of ink unevenness */
+.stamp{box-shadow:inset 0 0 6px rgba(23,56,47,.18)}
+
+/* scroll reveal (only when JS present) */
+.js .route-card,.js .process-step,.js .demo-panel,.js .contact-panel{opacity:0;translate:0 14px;transition:opacity .5s ease, translate .5s ease, transform .25s ease, box-shadow .25s ease}
+.js .in{opacity:1;translate:0 0}
+@media(prefers-reduced-motion:reduce){
+  .js .route-card,.js .process-step,.js .demo-panel,.js .contact-panel{opacity:1;translate:0 0;transition:none}
+  .route-card,.button,.hero-card{transition:none}
+}
+
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+}
+
+/* ---- dark mode: the workshop after hours ---- */
+@media (prefers-color-scheme: dark){
+  :root{
+    --paper:#181C18;
+    --paper-light:#212520;
+    --paper-card:#242922;
+    --ink:#E8E3D6;
+    --muted:#A9AD9F;
+    --green:#8FBCA7;
+    --green-dark:#153B30;
+    --rust:#D98A5C;
+    --rule:#3E443C;
+    --soft-rule:#30352E;
+    --stamp:#8FBCA7;
+    --white:#12251E;
+    --shadow:0 10px 26px rgba(0,0,0,.4);
+  }
+  body{
+    background:
+      radial-gradient(circle at 15% -5%,rgba(255,253,248,.05),transparent 24rem),
+      var(--paper);
+  }
+  body::before{opacity:.18}
+  header{background:rgba(24,28,24,.92)}
+  .button:hover{background:#A8CDBB}
+  [data-capacity="open"] .status-dot{background:#5FBF8A}
+  .status-sign{box-shadow:2px 2px 0 rgba(0,0,0,.4)}
+  .route-card,.hero-card{border-color:#3A4039;box-shadow:0 3px 9px rgba(0,0,0,.35)}
+  dialog.jobsheet{border-color:#3A4039}
+  .route-card::after,.hero-card::after{border-right-color:#333A33}
+  .route-card::before,.hero-card::before,.jobsheet-inner::before{border-color:#6B5A44;box-shadow:inset 0 0 0 2px rgba(255,255,255,.1)}
+  .route-card .route-id,.route-card h3,.route-block,.hero-card .route-id,.hc-field,.hc-rule,.jobsheet .route-id{border-color:#4C5248}
+  .jobsheet input,.jobsheet textarea,.jobsheet select{border-color:#4C5248}
+  .cardrow .route-card:hover,.hero-card:hover{box-shadow:0 12px 24px rgba(0,0,0,.5)}
+  .stat-box{background:var(--paper-light)}
+  .contact-panel{background:rgba(33,37,32,.8)}
+  .process-icon{background:rgba(143,188,167,.08)}
+  .stamp{box-shadow:inset 0 0 6px rgba(143,188,167,.22)}
+}
+
+/* ---- print: reads like a job sheet ---- */
+@media print{
+  :root{
+    --paper:#FFFFFF;
+    --paper-light:#FFFFFF;
+    --paper-card:#FFFFFF;
+    --ink:#171B18;
+    --muted:#60655E;
+    --green:#234F43;
+    --green-dark:#17382F;
+    --rust:#A45026;
+    --rule:#BDB5A8;
+    --soft-rule:#D7D0C3;
+    --stamp:#17382F;
+    --white:#FFFDF8;
+    --shadow:none;
+  }
+  body{background:#fff}
+  body::before,.skip-link,nav,.button,.more-link,dialog.jobsheet{display:none}
+  header{position:static;background:transparent;backdrop-filter:none}
+  .js .route-card,.js .process-step,.js .demo-panel,.js .contact-panel{opacity:1;translate:0 0;transition:none}
+  .route-card,.hero-card,.demo-panel,.contact-panel,.process-step,.tool-card{break-inside:avoid;box-shadow:none}
+  .cardrow .route-card,.hero-card,.status-sign{transform:none}
+}
+</style>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header>
+  <div class="wrap mast">
+    <a class="brand" href="#" aria-label="JSC Workshop home">
+      <span class="brand-mark" aria-hidden="true">JC</span>
+      <span class="brand-copy">
+        <strong>JSC Workshop</strong>
+        <span>Software built around how you work</span>
+      </span>
+    </a>
+    <nav aria-label="Primary navigation">
+      <a href="#jobs">The jobs</a>
+      <a href="#process">How it works</a>
+      <a href="#tools">From the workshop</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <div class="status-sign"><span class="status-dot"></span><span class="sign-text">The books are open</span></div>
+        <span class="kicker">Software for real operations</span>
+        <h1>I build tools that make work <span>run smoothly.</span></h1>
+        <p class="lede">Custom software for the everyday jobs that slow the day down. Built around how you actually work, not the other way round.</p>
+
+        <div class="hero-proof">
+          <div class="proof-item">
+            <span class="proof-icon">✓</span>
+            <span>11 years in manufacturing</span>
+          </div>
+          <div class="proof-item">
+            <span class="proof-icon">◇</span>
+            <span>Fixed price projects</span>
+          </div>
+          <div class="proof-item">
+            <span class="proof-icon">⌁</span>
+            <span>Tools that fit your operation</span>
+          </div>
+        </div>
+
+        <a class="button" href="#contact">Tell me about the job you dread →</a>
+      </div>
+
+      <div class="hero-visual">
+        <a class="hero-card" href="#contact" aria-label="Open the job sheet and tell me about the job">
+          <span class="route-id">Route card 000 · Yours</span>
+          <span class="hc-title">Your job sheet</span>
+          <span class="hc-hint">Thirty seconds. No detail needed.</span>
+          <span class="hc-field"><strong>Your name</strong></span>
+          <span class="hc-field">
+            <strong>The job that eats the time</strong>
+            <span class="hc-rule"></span>
+            <span class="hc-rule"></span>
+          </span>
+          <span class="hc-field">
+            <strong>How often it bites</strong>
+            <span class="hc-opts">
+              <span class="hc-opt">Every day</span>
+              <span class="hc-opt">Every week</span>
+              <span class="hc-opt">Every month</span>
+            </span>
+          </span>
+          <span class="hc-foot">
+            <span class="hc-cta">Fill it in →</span>
+            <span class="stamp"><span>Problem<b>JSC</b>Fixable</span></span>
+          </span>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="jobs section-rule" id="jobs">
+    <div class="wrap jobs-grid">
+      <div class="jobs-intro">
+        <div class="section-heading">
+          <span class="num">01</span>
+          <span class="section-label">The jobs I mean</span>
+        </div>
+        <h2>Route cards from real operations.</h2>
+        <p>If any of these look familiar, you're in the right place.</p>
+        <p class="tiny-label" style="margin-top:10px">Illustrative examples from 11 years on the floor</p>
+        <a class="more-link" href="#example">See more examples →</a>
+      </div>
+
+      <div class="cardrow">
+        <article class="route-card">
+          <div class="route-id">Route card 001</div>
+          <h3>Covering absence</h3>
+          <div class="route-block">
+            <strong>Before</strong>
+            <p>Half a morning with a whiteboard</p>
+          </div>
+          <div class="route-block after">
+            <strong>After</strong>
+            <p>A few clicks</p>
+          </div>
+          <div class="route-footer">
+            <div class="saving">
+              <strong>Typical time lost</strong>
+              <span>6–8 hrs / week</span>
+            </div>
+            <div class="stamp"><span>Problem<b>JSC</b>Fixable</span></div>
+          </div>
+        </article>
+
+        <article class="route-card">
+          <div class="route-id">Route card 002</div>
+          <h3>The weekly report</h3>
+          <div class="route-block">
+            <strong>Before</strong>
+            <p>Rebuilt from scratch every Friday</p>
+          </div>
+          <div class="route-block after">
+            <strong>After</strong>
+            <p>Ready when you are</p>
+          </div>
+          <div class="route-footer">
+            <div class="saving">
+              <strong>Typical time lost</strong>
+              <span>3–4 hrs / week</span>
+            </div>
+            <div class="stamp"><span>Problem<b>JSC</b>Fixable</span></div>
+          </div>
+        </article>
+
+        <article class="route-card">
+          <div class="route-id">Route card 003</div>
+          <h3>Finding the information</h3>
+          <div class="route-block">
+            <strong>Before</strong>
+            <p>Three spreadsheets and someone's head</p>
+          </div>
+          <div class="route-block after">
+            <strong>After</strong>
+            <p>One place, always current</p>
+          </div>
+          <div class="route-footer">
+            <div class="saving">
+              <strong>Typical time lost</strong>
+              <span>5+ hrs / week</span>
+            </div>
+            <div class="stamp"><span>Problem<b>JSC</b>Fixable</span></div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="process section-rule" id="process">
+    <div class="wrap">
+      <div class="section-heading">
+        <span class="num">02</span>
+        <span class="section-label">How it works</span>
+      </div>
+
+      <div class="process-row">
+        <article class="process-step">
+          <div class="process-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"></circle><path d="m20.5 20.5-4.4-4.4"></path></svg></div>
+          <h3>Understand</h3>
+          <p>I spend a day in your operation, listen to your team and map the friction.</p>
+        </article>
+        <article class="process-step">
+          <div class="process-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="2.5"></rect><path d="m8 12.5 3 3 5.5-6.5"></path></svg></div>
+          <h3>Choose</h3>
+          <p>We agree the job that will make the biggest difference and the outcome we want.</p>
+        </article>
+        <article class="process-step">
+          <div class="process-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg></div>
+          <h3>Build</h3>
+          <p>I build it properly, test it with the people who'll use it and make sure it fits the way you work.</p>
+        </article>
+        <article class="process-step">
+          <div class="process-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 17.5 9.5 11l4 4L21 7"></path><path d="M15.5 7H21v5.5"></path></svg></div>
+          <h3>Improve</h3>
+          <p>Ongoing support and small improvements as your operation evolves.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="example section-rule" id="example">
+    <div class="wrap example-grid">
+      <div class="example-copy">
+        <div class="section-heading">
+          <span class="num">03</span>
+          <span class="section-label">One example</span>
+        </div>
+        <h2>Training & cover planning system</h2>
+        <p>Maps every operator's qualifications against what each line needs. Covering absence takes minutes instead of a morning.</p>
+        <p class="tiny-label" style="margin-top:24px">A short demo film is on its way. Until then, ask and I'll walk you through the real thing.</p>
+      </div>
+
+      <div class="demo-panel" aria-label="Training and cover planning interface preview">
+        <div class="demo-sidebar">
+          <div class="demo-dot"></div>
+          <div class="demo-dot"></div>
+          <div class="demo-dot"></div>
+          <div class="demo-dot"></div>
+          <div class="demo-dot"></div>
+        </div>
+
+        <div class="demo-main">
+          <div class="demo-title">Overview</div>
+          <div class="demo-stats">
+            <div class="stat-box"><span>Covered</span><strong>98%</strong></div>
+            <div class="stat-box"><span>At risk</span><strong>2</strong></div>
+            <div class="stat-box"><span>People on shift</span><strong>42</strong></div>
+            <div class="stat-box"><span>Gaps</span><strong>1</strong></div>
+          </div>
+
+          <div class="matrix">
+            <div></div><div>M</div><div>T</div><div>W</div><div>T</div><div>F</div><div>S</div><div>S</div>
+            <div class="line">Line A</div><div><span class="dot"></span></div><div><span class="dot"></span></div><div><span class="dot"></span></div><div><span class="dot"></span></div><div><span class="dot warn"></span></div><div><span class="dot"></span></div><div><span class="dot"></span></div>
+            <div class="line">Line B</div><div><span class="dot"></span></div><div><span class="dot"></span></div><div><span class="dot"></span></div><div><span class="dot"></span></div><div><span class="dot"></span></div><div><span class="dot warn"></span></div><div><span class="dot"></span></div>
+            <div class="line">Line C</div><div><span class="dot warn"></span></div><div><span class="dot"></span></div><div><span class="dot"></span></div><div><span class="dot"></span></div><div><span class="dot"></span></div><div><span class="dot"></span></div><div><span class="dot"></span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="workshop-tool section-rule" id="tools">
+    <div class="wrap">
+      <div class="section-heading">
+        <span class="num">04</span>
+        <span class="section-label">From the workshop</span>
+      </div>
+      <div class="tool-card">
+        <div>
+          <h3>The Pseudonymiser</h3>
+          <span class="offline">Runs offline · nothing uploads</span>
+          <p>Sometimes building a tool means working from a copy of your data. I'd rather not hold the real thing, and you'd rather not send it. So here's a free tool that swaps every name for a fake one, nudges the numbers just enough, shifts the dates and scrambles the IDs. The data still behaves like the real thing. It just isn't about real people any more.</p>
+          <p>It runs entirely in your browser. Turn your Wi-Fi off halfway through and it carries on working. There's example data built in, so you can watch every step before your own file goes anywhere near it.</p>
+          <a class="button outline" href="https://pseudonymiser.jscworkshop.co.uk/" target="_blank" rel="noopener">Try it yourself →</a>
+        </div>
+        <div class="tool-visual" aria-label="Before and after example">
+          <div class="cap">Before → After</div>
+          <div class="rowline"><span class="old">Karen Fletcher</span><span class="new">Sue Baker</span></div>
+          <div class="rowline"><span class="old">QQ345678A</span><span class="new">TR812409C</span></div>
+          <div class="rowline"><span class="old">£1,450.00</span><span class="new">£1,382.00</span></div>
+          <div class="rowline"><span class="old">14 Mar 2026</span><span class="new">02 Apr 2026</span></div>
+          <div class="rowline"><span class="old">07811 234567</span><span class="new">07700 900123</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact section-rule" id="contact">
+    <div class="wrap contact-panel">
+      <div>
+        <div class="status-sign"><span class="status-dot"></span><span class="sign-text">The books are open</span></div>
+        <h2>If something feels harder than it should be, let's talk.</h2>
+        <p class="status-note" style="display:none"></p>
+      </div>
+      <div>
+        <p>No pitch. No jargon. Just a chat about the job that's eating your time, and an honest answer on whether I can help.</p>
+      </div>
+      <div class="contact-details">
+        <div class="contact-row"><span class="contact-icon">✉</span><span>hello@example.co.uk</span></div>
+        <div class="contact-row"><span class="contact-icon">in</span><span>/in/jordan-crombie</span></div>
+        <div class="contact-row"><span class="contact-icon">☎</span><span>07800 123456</span></div>
+      </div>
+      <div class="contact-stamp">
+        <div class="stamp"><span>Built around<b>JC</b>how you work</span></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+
+<dialog class="jobsheet" id="jobsheet" aria-labelledby="jobsheet-title">
+  <form method="dialog" class="jobsheet-inner" id="jobsheet-form">
+    <button type="button" class="close-x" id="jobsheet-close" aria-label="Close">✕</button>
+    <span class="route-id">Route card 000 · Yours</span>
+    <h3 id="jobsheet-title">Tell me about the job</h3>
+    <p class="hint">Thirty seconds, no detail needed. Enough for me to come back with something useful rather than "tell me more."</p>
+
+    <label for="js-name">Your name</label>
+    <input id="js-name" name="name" autocomplete="name" required>
+
+    <label for="js-biz">Business (optional)</label>
+    <input id="js-biz" name="business" autocomplete="organization">
+
+    <label for="js-job">The job that eats the time</label>
+    <textarea id="js-job" name="job" required placeholder="e.g. Every Friday I rebuild the same report from three spreadsheets and it takes most of the morning."></textarea>
+
+    <label for="js-freq">How often does it bite?</label>
+    <select id="js-freq" name="freq">
+      <option>Every day</option>
+      <option selected>Every week</option>
+      <option>Every month</option>
+      <option>Now and then, but badly</option>
+    </select>
+
+    <div class="jobsheet-actions">
+      <button type="submit" class="button">Send the job sheet →</button>
+      <span class="mailto-alt">Opens your email app with it all filled in.</span>
+    </div>
+  </form>
+</dialog>
+
+<footer>
+  <div class="wrap footer-row">
+    <span>© 2026 JSC Workshop</span>
+    <span>Form JSC-01 · Est. 2026</span>
+    <span>Made in the Black Country</span>
+    <span>No cookies · No analytics · Nothing tracked</span>
+  </div>
+</footer>
+
+<script>
+/* ============================================================
+   CAPACITY SWITCH — edit this one line as your workload changes:
+   "open"      = taking new projects
+   "waitlist"  = busy, register interest
+   "closed"    = books closed until the date below
+   ============================================================ */
+const CAPACITY = "open";
+const REOPEN = "September"; // only shown when closed
+
+const STATES = {
+  open: {
+    sign: "The books are open",
+    heroBtn: "Tell me about the job you dread →",
+    contactP: "No pitch. No jargon. Just a chat about the job that's eating your time, and an honest answer on whether I can help.",
+    note: ""
+  },
+  waitlist: {
+    sign: "Busy building · waitlist open",
+    heroBtn: "Register your interest →",
+    contactP: "I'm mid-build for another business right now, so new projects join a short waitlist. Tell me about the job anyway and I'll come back to you with an honest timeline.",
+    note: "Current wait for a discovery day: ask, it changes."
+  },
+  closed: {
+    sign: "Books closed",
+    heroBtn: "Register your interest →",
+    contactP: "I'm fully booked and not starting new projects until " + REOPEN + ". Register your interest and you'll be first to hear when a slot opens.",
+    note: "Reopening " + REOPEN + ". Registered interest gets first refusal."
+  }
+};
+document.body.dataset.capacity = CAPACITY;
+const st = STATES[CAPACITY];
+document.querySelectorAll(".status-sign .sign-text").forEach(e => e.textContent = st.sign);
+const heroBtn = document.querySelector(".hero .button");
+if (heroBtn) heroBtn.textContent = st.heroBtn;
+const contactP = document.querySelector(".contact-panel p");
+if (contactP) contactP.textContent = st.contactP;
+const noteEl = document.querySelector(".status-note");
+if (noteEl) { noteEl.textContent = st.note; noteEl.style.display = st.note ? "block" : "none"; }
+</script>
+<script>
+document.documentElement.classList.add('js');
+if(!matchMedia('(prefers-reduced-motion: reduce)').matches){
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+  document.querySelectorAll('.route-card,.process-step,.demo-panel,.contact-panel').forEach(el=>io.observe(el));
+}else{
+  document.querySelectorAll('.route-card,.process-step,.demo-panel,.contact-panel').forEach(el=>el.classList.add('in'));
+}
+</script>
+<script>
+(function(){
+  const EMAIL = "hello@example.co.uk"; // swap for the real address before going live
+  const dlg = document.getElementById("jobsheet");
+  const form = document.getElementById("jobsheet-form");
+  if(!dlg || !form) return;
+
+  // Hero + contact buttons open the job sheet
+  document.querySelectorAll('a.button[href="#contact"], a.hero-card[href="#contact"], .contact-details').forEach(el=>{
+    el.addEventListener("click", e=>{
+      const mailRow = e.target.closest(".contact-row");
+      if (el.classList.contains("contact-details") && !mailRow) return;
+      if (mailRow && !mailRow.textContent.includes("@")) return; // only the email row opens it
+      e.preventDefault();
+      dlg.showModal();
+      document.getElementById("js-name").focus();
+    });
+  });
+
+  document.getElementById("jobsheet-close").addEventListener("click", ()=>dlg.close());
+
+  form.addEventListener("submit", e=>{
+    e.preventDefault();
+    const name = document.getElementById("js-name").value.trim();
+    const biz  = document.getElementById("js-biz").value.trim();
+    const job  = document.getElementById("js-job").value.trim();
+    const freq = document.getElementById("js-freq").value;
+    const cap  = document.body.dataset.capacity || "open";
+    const subj = (cap === "open" ? "Job sheet: " : cap === "waitlist" ? "Waitlist job sheet: " : "Register interest: ")
+                 + (job.split(" ").slice(0,6).join(" ") || "a job that takes too long");
+    const body = [
+      "ROUTE CARD 000",
+      "----------------",
+      "Name: " + name,
+      biz ? "Business: " + biz : null,
+      "How often: " + freq,
+      "",
+      "The job:",
+      job
+    ].filter(Boolean).join("\n");
+    window.location.href = "mailto:" + EMAIL + "?subject=" + encodeURIComponent(subj) + "&body=" + encodeURIComponent(body);
+    dlg.close();
+  });
+})();
+</script>
+</body>
+</html>
