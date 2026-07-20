@@ -45,11 +45,12 @@ jscworkshop.co.uk. Read this before editing anything.
 
 ## Current state and known placeholders
 
-- Contact email is a PLACEHOLDER. hello@example.co.uk appears in
-  THREE places that must change together when mail forwarding is
-  live: the visible contact-row text, the mailto: href on that row,
-  and the EMAIL const in the job-sheet script. Search for
-  example.co.uk to find them all.
+- Contact email is LIVE: jordan@jscworkshop.co.uk (Google Workspace
+  on the .co.uk domain, wired 2026-07-20). If it ever changes, it
+  appears in THREE places that must change together: the visible
+  contact-row text, the mailto: href on that row, and the EMAIL
+  const in the job-sheet script. Search for jscworkshop.co.uk
+  mailto/EMAIL usages to find them all.
 - The phone number 07800 123456 is a PLACEHOLDER and deliberately
   plain text, not a link. When the real number exists, update the
   digits and make the row a tel: anchor like the rows beside it.
