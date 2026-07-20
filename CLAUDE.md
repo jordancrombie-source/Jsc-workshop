@@ -9,6 +9,10 @@ jscworkshop.co.uk. Read this before editing anything.
 - ONE self-contained file: index.html. All CSS and JS stay inline.
   No build step, no frameworks, no npm. This is deliberate: the site
   is itself a demonstration of simple tools done properly.
+  The single agreed exception is og.jpg, the 1200x630 social share
+  card, because link crawlers will not accept an SVG or a data URI
+  and need a real file at an absolute URL. Images may live beside
+  index.html. Code and styles may not.
 - No analytics, no trackers, no external requests except Google Fonts.
 - Must work with JavaScript disabled (content readable, reveal
   animations simply don't run). Respect prefers-reduced-motion.
@@ -26,13 +30,36 @@ jscworkshop.co.uk. Read this before editing anything.
 - Illustrative figures stay labelled honest ("Typical time lost").
   Never imply client results that don't exist.
 
+## Brand marks (do not mix these up)
+
+- The full seal (double ring, diamond finials, ticks, JSC with
+  WORKSHOP inside) is the logo. It appears in the header, stamped on
+  the bio letter, and on og.jpg. Anywhere the mark shows at a
+  visible size, use the full seal.
+- The favicon alone uses a heavy ring with "JC", because three
+  letters are unreadable at 16px. Do not "fix" it to JSC.
+- The letterforms in the inline SVGs are baked path outlines taken
+  from IBM Plex Serif and IBM Plex Mono, not live text, so the mark
+  never depends on a font loading. Regenerating them needs Python
+  fontTools; keep the paths as they are unless the mark changes.
+
 ## Current state and known placeholders
 
-- Contact email and phone are PLACEHOLDERS (hello@example.co.uk and
-  the EMAIL const in the job-sheet script). Swap to the real
-  hello@jscworkshop.co.uk address when mail forwarding is live.
-- CAPACITY const controls the shop-door sign: "open" / "waitlist" /
-  "closed". REOPEN names the return month when closed.
+- Contact email is a PLACEHOLDER. hello@example.co.uk appears in
+  THREE places that must change together when mail forwarding is
+  live: the visible contact-row text, the mailto: href on that row,
+  and the EMAIL const in the job-sheet script. Search for
+  example.co.uk to find them all.
+- The phone number 07800 123456 is a PLACEHOLDER and deliberately
+  plain text, not a link. When the real number exists, update the
+  digits and make the row a tel: anchor like the rows beside it.
+  Never make the placeholder digits dialable.
+- The shop-door sign is driven by the data-capacity attribute on
+  <body>: "open" / "waitlist" / "closed". Edit that one value and
+  nothing else. All three sets of copy live in the markup and CSS
+  shows only the matching one, so the sign stays truthful even with
+  JavaScript off. When closed, check the return month named in the
+  closed copy (currently September) is still right.
 - The Pseudonymiser section links to the live tool at
   https://pseudonymiser.jscworkshop.co.uk/; keep that URL in sync if
   it moves.
