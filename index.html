@@ -614,6 +614,47 @@ nav a:hover{color:var(--green)}
 .matrix .line{justify-content:start;padding-left:10px;font-weight:600}
 .dot{width:11px;height:11px;border-radius:50%;background:#66877B}
 .dot.warn{background:#B67B24}
+
+/* the tap-through: one cover moment, sketch stays honest without JS */
+.js-only{display:none}
+.js .js-only{display:inline}
+.demo-go{display:none}
+.js .demo-go{
+  display:inline-block;
+  margin-top:16px;
+  min-height:44px;
+  padding:9px 16px;
+  border:1px solid var(--rule);
+  background:transparent;
+  color:var(--ink);
+  font-family:var(--mono);
+  font-size:.62rem;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+  cursor:pointer;
+}
+.demo-go:hover{background:var(--paper-card)}
+.demo-plan{display:none;margin-top:14px;border-top:1px solid var(--soft-rule);padding-top:12px}
+.demo-panel.planned .demo-plan{display:block}
+.js .demo-panel.planned .demo-go{display:none}
+.demo-plan ol{margin:0 0 10px;padding-left:20px;font-size:.82rem}
+.demo-plan li{margin-bottom:5px}
+.demo-done{font-family:var(--mono);font-size:.62rem;text-transform:uppercase;letter-spacing:.08em;color:var(--green);font-weight:600}
+.demo-reset{
+  display:inline-block;
+  margin-left:14px;
+  padding:12px 0;
+  border:none;
+  background:none;
+  font-family:var(--mono);
+  font-size:.62rem;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+  color:var(--muted);
+  text-decoration:underline;
+  cursor:pointer;
+}
+.demo-panel.planned .dot.fix{background:#66877B}
 @media(max-width:840px){
   .example-grid{grid-template-columns:1fr}
   .example-copy{padding-left:0}
@@ -854,6 +895,7 @@ nav a:hover::after{width:100%}
   header{position:static;background:transparent;backdrop-filter:none}
   .js .route-card,.js .process-step,.js .demo-panel,.js .contact-panel{opacity:1;translate:0 0;transition:none}
   .route-card,.hero-card,.demo-panel,.contact-panel,.process-step,.tool-card,.person-letter{break-inside:avoid;box-shadow:none}
+  .demo-go,.demo-reset{display:none!important}
   .cardrow .route-card,.hero-card,.status-sign{transform:none}
   .contact-panel{background:transparent}
   .route-card,.hero-card{border-color:var(--rule)}
@@ -1082,11 +1124,11 @@ nav a:hover::after{width:100%}
         </div>
         <h2>Training & cover planning system</h2>
         <p>Maps every operator's qualifications against what each line needs. Covering absence takes minutes instead of a morning.</p>
-        <p class="tiny-label" style="margin-top:24px">A short demo film is on its way. Until then, ask and I'll walk you through the real thing.</p>
+        <p class="tiny-label" style="margin-top:24px">The panel is a sketch<span class="js-only">, but the button works</span>. For the real thing, ask and I'll walk you through it.</p>
       </div>
 
-      <div class="demo-panel" role="img" aria-label="Training and cover planning interface preview">
-        <div class="demo-sidebar">
+      <div class="demo-panel">
+        <div class="demo-sidebar" aria-hidden="true">
           <div class="demo-dot"></div>
           <div class="demo-dot"></div>
           <div class="demo-dot"></div>
@@ -1096,18 +1138,28 @@ nav a:hover::after{width:100%}
 
         <div class="demo-main">
           <div class="demo-title">Overview</div>
-          <div class="demo-stats">
-            <div class="stat-box"><span>Covered</span><strong>98%</strong></div>
-            <div class="stat-box"><span>At risk</span><strong>2</strong></div>
-            <div class="stat-box"><span>People on shift</span><strong>42</strong></div>
-            <div class="stat-box"><span>Gaps</span><strong>1</strong></div>
-          </div>
+          <div aria-hidden="true">
+            <div class="demo-stats">
+              <div class="stat-box"><span>Covered</span><strong id="demo-cov">98%</strong></div>
+              <div class="stat-box"><span>At risk</span><strong id="demo-risk">2</strong></div>
+              <div class="stat-box"><span>People on shift</span><strong>42</strong></div>
+              <div class="stat-box"><span>Gaps</span><strong id="demo-gaps">1</strong></div>
+            </div>
 
-          <div class="matrix">
-            <div></div><div>M</div><div>T</div><div>W</div><div>T</div><div>F</div><div>S</div><div>S</div>
-            <div class="line">Line A</div><div><span class="dot"></span></div><div><span class="dot"></span></div><div><span class="dot"></span></div><div><span class="dot"></span></div><div><span class="dot warn"></span></div><div><span class="dot"></span></div><div><span class="dot"></span></div>
-            <div class="line">Line B</div><div><span class="dot"></span></div><div><span class="dot"></span></div><div><span class="dot"></span></div><div><span class="dot"></span></div><div><span class="dot"></span></div><div><span class="dot warn"></span></div><div><span class="dot"></span></div>
-            <div class="line">Line C</div><div><span class="dot warn"></span></div><div><span class="dot"></span></div><div><span class="dot"></span></div><div><span class="dot"></span></div><div><span class="dot"></span></div><div><span class="dot"></span></div><div><span class="dot"></span></div>
+            <div class="matrix">
+              <div></div><div>M</div><div>T</div><div>W</div><div>T</div><div>F</div><div>S</div><div>S</div>
+              <div class="line">Line A</div><div><span class="dot"></span></div><div><span class="dot"></span></div><div><span class="dot"></span></div><div><span class="dot"></span></div><div><span class="dot warn fix"></span></div><div><span class="dot"></span></div><div><span class="dot"></span></div>
+              <div class="line">Line B</div><div><span class="dot"></span></div><div><span class="dot"></span></div><div><span class="dot"></span></div><div><span class="dot"></span></div><div><span class="dot"></span></div><div><span class="dot warn"></span></div><div><span class="dot"></span></div>
+              <div class="line">Line C</div><div><span class="dot warn"></span></div><div><span class="dot"></span></div><div><span class="dot"></span></div><div><span class="dot"></span></div><div><span class="dot"></span></div><div><span class="dot"></span></div><div><span class="dot"></span></div>
+            </div>
+          </div>
+          <button class="demo-go" id="demo-go" type="button">Cover Friday's gap</button>
+          <div class="demo-plan" role="status">
+            <ol>
+              <li>Ryan covers press two on Friday. Trained and in date.</li>
+              <li>Dee steps up from pack to cover Ryan.</li>
+            </ol>
+            <span class="demo-done">Covered in two moves</span><button class="demo-reset" id="demo-reset" type="button">Put it back</button>
           </div>
         </div>
       </div>
@@ -1243,6 +1295,24 @@ if(!matchMedia('(prefers-reduced-motion: reduce)').matches){
 }else{
   document.querySelectorAll('.route-card,.process-step,.demo-panel,.contact-panel').forEach(el=>el.classList.add('in'));
 }
+(function(){
+  const panel=document.querySelector('.demo-panel');
+  const go=document.getElementById('demo-go');
+  const reset=document.getElementById('demo-reset');
+  const cov=document.getElementById('demo-cov');
+  const risk=document.getElementById('demo-risk');
+  const gaps=document.getElementById('demo-gaps');
+  if(!panel||!go||!reset||!cov||!risk||!gaps) return;
+  function set(on){
+    panel.classList.toggle('planned',on);
+    cov.textContent=on?'100%':'98%';
+    risk.textContent=on?'1':'2';
+    gaps.textContent=on?'0':'1';
+    (on?reset:go).focus({preventScroll:true});
+  }
+  go.addEventListener('click',()=>set(true));
+  reset.addEventListener('click',()=>set(false));
+})();
 </script>
 <script>
 (function(){
