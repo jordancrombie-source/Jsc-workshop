@@ -733,6 +733,7 @@ footer{padding:14px 0 24px}
 
 /* ---- job sheet dialog ---- */
 dialog.jobsheet{
+  margin:auto;
   width:min(560px,calc(100% - 32px));
   border:1px solid #C9BDA8;
   background:
@@ -1356,7 +1357,7 @@ if(!matchMedia('(prefers-reduced-motion: reduce)').matches){
   if(!dlg || !form) return;
 
   // Hero + contact buttons open the job sheet
-  document.querySelectorAll('a.button[href="#contact"], a.hero-card[href="#contact"], a.contact-row[href^="mailto:"]').forEach(el=>{
+  document.querySelectorAll('a[href="#contact"], a.contact-row[href^="mailto:"]').forEach(el=>{
     el.addEventListener("click", e=>{
       e.preventDefault();
       dlg.showModal();
