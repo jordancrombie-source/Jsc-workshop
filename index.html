@@ -596,8 +596,14 @@ nav a:hover{color:var(--green)}
   background:var(--paper-light);
   box-shadow:0 4px 12px rgba(50,38,24,.08);
 }
-.demo-sidebar{background:var(--green-dark);padding:22px 14px}
-.demo-dot{width:10px;height:10px;border:1px solid white;margin:0 auto 22px}
+.demo-sidebar{background:var(--green-dark);padding:24px 6px;display:flex;flex-direction:column;gap:24px;align-items:center}
+.demo-nav{position:relative;display:grid;justify-items:center;gap:6px;opacity:.55}
+.demo-nav.on{opacity:1}
+.demo-nav i{width:12px;height:12px;border:1px solid #fff}
+.demo-nav.on i{background:rgba(255,255,255,.85)}
+.demo-nav b{font-family:var(--mono);font-size:.5rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#fff}
+.demo-nav em{position:absolute;top:-6px;right:8px;width:13px;height:13px;border-radius:50%;background:var(--rust);color:#fff;font:600 .5rem var(--mono);font-style:normal;display:grid;place-items:center}
+.demo-panel.planned .demo-nav em{display:none}
 .demo-main{padding:18px}
 .demo-title{
   font-family:var(--mono);
@@ -1149,11 +1155,9 @@ nav a:hover::after{width:100%}
 
       <div class="demo-panel">
         <div class="demo-sidebar" aria-hidden="true">
-          <div class="demo-dot"></div>
-          <div class="demo-dot"></div>
-          <div class="demo-dot"></div>
-          <div class="demo-dot"></div>
-          <div class="demo-dot"></div>
+          <div class="demo-nav on"><i></i><b>Ops</b></div>
+          <div class="demo-nav"><i></i><b>Training</b></div>
+          <div class="demo-nav"><i></i><b>Planning</b><em>1</em></div>
         </div>
 
         <div class="demo-main">
