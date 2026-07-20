@@ -609,11 +609,15 @@ nav a:hover{color:var(--green)}
 .stat-box{border:1px solid var(--soft-rule);padding:12px;background:white}
 .stat-box span{display:block;font-family:var(--mono);font-size:.55rem;text-transform:uppercase;color:var(--muted)}
 .stat-box strong{font-family:var(--display);font-size:2rem}
-.matrix{display:grid;grid-template-columns:1.3fr repeat(7,1fr);margin-top:14px;border-top:1px solid var(--soft-rule);border-left:1px solid var(--soft-rule)}
-.matrix div{min-height:34px;border-right:1px solid var(--soft-rule);border-bottom:1px solid var(--soft-rule);display:grid;place-items:center;font-family:var(--mono);font-size:.58rem}
-.matrix .line{justify-content:start;padding-left:10px;font-weight:600}
-.dot{width:11px;height:11px;border-radius:50%;background:#66877B}
-.dot.warn{background:#B67B24}
+.demo-line{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;margin-top:14px}
+.demo-cell{border:1px solid var(--soft-rule);background:white;padding:9px 4px;display:grid;place-items:center;gap:3px;font-family:var(--mono)}
+.demo-cell b{font-size:.72rem;font-weight:600}
+.demo-cell i{font-style:normal;font-size:.78rem;line-height:1;color:var(--green)}
+.demo-cell .g-mv{display:none;color:#B67B24}
+.demo-panel.planned .demo-cell.flip .g-ok{display:none}
+.demo-panel.planned .demo-cell.flip .g-mv{display:inline}
+.demo-panel.planned .demo-cell.flip{border-color:#B67B24}
+.demo-key{margin-top:10px;font-family:var(--mono);font-size:.58rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
 
 /* the tap-through: one cover moment, sketch stays honest without JS */
 .js-only{display:none}
@@ -654,13 +658,13 @@ nav a:hover{color:var(--green)}
   text-decoration:underline;
   cursor:pointer;
 }
-.demo-panel.planned .dot.fix{background:#66877B}
 @media(max-width:840px){
   .example-grid{grid-template-columns:1fr}
   .example-copy{padding-left:0}
 }
 @media(max-width:560px){
   .demo-stats{grid-template-columns:repeat(2,1fr)}
+  .demo-line{grid-template-columns:repeat(3,1fr)}
 }
 
 .contact{padding:18px 0 0}
@@ -867,7 +871,7 @@ nav a:hover::after{width:100%}
   .route-card .route-id,.route-card h3,.route-block,.hero-card .route-id,.hc-field,.hc-rule,.jobsheet .route-id{border-color:#4C5248}
   .jobsheet input,.jobsheet textarea,.jobsheet select{border-color:#4C5248}
   .cardrow .route-card:hover,.hero-card:hover{box-shadow:0 12px 24px rgba(0,0,0,.5)}
-  .stat-box{background:var(--paper-light)}
+  .stat-box,.demo-cell{background:var(--paper-light)}
   .contact-panel{background:rgba(33,37,32,.8)}
   .process-icon{background:rgba(143,188,167,.08)}
   .stamp{box-shadow:inset 0 0 6px rgba(143,188,167,.22)}
@@ -1137,27 +1141,30 @@ nav a:hover::after{width:100%}
         </div>
 
         <div class="demo-main">
-          <div class="demo-title">Overview</div>
+          <div class="demo-title">Today's coverage · Area 2</div>
           <div aria-hidden="true">
             <div class="demo-stats">
-              <div class="stat-box"><span>Covered</span><strong id="demo-cov">98%</strong></div>
-              <div class="stat-box"><span>At risk</span><strong id="demo-risk">2</strong></div>
-              <div class="stat-box"><span>People on shift</span><strong>42</strong></div>
-              <div class="stat-box"><span>Gaps</span><strong id="demo-gaps">1</strong></div>
+              <div class="stat-box"><span>People on shift</span><strong id="demo-shift">14</strong></div>
+              <div class="stat-box"><span>Off today</span><strong id="demo-off">0</strong></div>
+              <div class="stat-box"><span>Moves in plan</span><strong id="demo-moves">0</strong></div>
+              <div class="stat-box"><span>Stations short</span><strong>0</strong></div>
             </div>
 
-            <div class="matrix">
-              <div></div><div>M</div><div>T</div><div>W</div><div>T</div><div>F</div><div>S</div><div>S</div>
-              <div class="line">Line A</div><div><span class="dot"></span></div><div><span class="dot"></span></div><div><span class="dot"></span></div><div><span class="dot"></span></div><div><span class="dot warn fix"></span></div><div><span class="dot"></span></div><div><span class="dot"></span></div>
-              <div class="line">Line B</div><div><span class="dot"></span></div><div><span class="dot"></span></div><div><span class="dot"></span></div><div><span class="dot"></span></div><div><span class="dot"></span></div><div><span class="dot warn"></span></div><div><span class="dot"></span></div>
-              <div class="line">Line C</div><div><span class="dot warn"></span></div><div><span class="dot"></span></div><div><span class="dot"></span></div><div><span class="dot"></span></div><div><span class="dot"></span></div><div><span class="dot"></span></div><div><span class="dot"></span></div>
+            <div class="demo-line">
+              <div class="demo-cell"><i>✓</i><b>10</b></div>
+              <div class="demo-cell"><i>✓</i><b>20</b></div>
+              <div class="demo-cell flip"><i class="g-ok">✓</i><i class="g-mv">→</i><b>30</b></div>
+              <div class="demo-cell"><i>✓</i><b>40</b></div>
+              <div class="demo-cell flip"><i class="g-ok">✓</i><i class="g-mv">→</i><b>50</b></div>
+              <div class="demo-cell"><i>✓</i><b>60</b></div>
             </div>
+            <div class="demo-key">✓ home crew &nbsp;·&nbsp; → moved cover</div>
           </div>
-          <button class="demo-go" id="demo-go" type="button">Cover Friday's gap</button>
+          <button class="demo-go" id="demo-go" type="button">Log Sam off sick</button>
           <div class="demo-plan" role="status">
             <ol>
-              <li>Ryan covers press two on Friday. Trained and in date.</li>
-              <li>Dee steps up from pack to cover Ryan.</li>
+              <li>Ryan moves from 50 to 30. Trained on 30, in date. No spare holds it directly.</li>
+              <li>Dee, hall spare, backfills 50 for the day.</li>
             </ol>
             <span class="demo-done">Covered in two moves</span><button class="demo-reset" id="demo-reset" type="button">Put it back</button>
           </div>
@@ -1299,15 +1306,15 @@ if(!matchMedia('(prefers-reduced-motion: reduce)').matches){
   const panel=document.querySelector('.demo-panel');
   const go=document.getElementById('demo-go');
   const reset=document.getElementById('demo-reset');
-  const cov=document.getElementById('demo-cov');
-  const risk=document.getElementById('demo-risk');
-  const gaps=document.getElementById('demo-gaps');
-  if(!panel||!go||!reset||!cov||!risk||!gaps) return;
+  const shift=document.getElementById('demo-shift');
+  const off=document.getElementById('demo-off');
+  const moves=document.getElementById('demo-moves');
+  if(!panel||!go||!reset||!shift||!off||!moves) return;
   function set(on){
     panel.classList.toggle('planned',on);
-    cov.textContent=on?'100%':'98%';
-    risk.textContent=on?'1':'2';
-    gaps.textContent=on?'0':'1';
+    shift.textContent=on?'13':'14';
+    off.textContent=on?'1':'0';
+    moves.textContent=on?'2':'0';
     (on?reset:go).focus({preventScroll:true});
   }
   go.addEventListener('click',()=>set(true));
