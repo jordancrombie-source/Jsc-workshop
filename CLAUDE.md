@@ -51,10 +51,10 @@ jscworkshop.co.uk. Read this before editing anything.
   contact-row text, the mailto: href on that row, and the EMAIL
   const in the job-sheet script. Search for jscworkshop.co.uk
   mailto/EMAIL usages to find them all.
-- The phone number 07800 123456 is a PLACEHOLDER and deliberately
-  plain text, not a link. When the real number exists, update the
-  digits and make the row a tel: anchor like the rows beside it.
-  Never make the placeholder digits dialable.
+- The phone row is PARKED: removed from the contact panel (an HTML
+  comment marks the spot) until the real number exists. When it does,
+  reinstate the row as a tel: anchor like the rows beside it. Never
+  publish placeholder digits.
 - The shop-door sign is driven by the data-capacity attribute on
   <body>: "open" / "waitlist" / "closed". Edit that one value and
   nothing else. All three sets of copy live in the markup and CSS

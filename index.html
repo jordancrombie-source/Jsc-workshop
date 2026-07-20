@@ -246,15 +246,15 @@ nav a:hover{color:var(--green)}
 .proof-item:first-child{padding-left:0}
 .proof-item:last-child{border-right:0}
 .proof-icon{
-  width:24px;
+  width:34px;
   aspect-ratio:1;
   border:1px solid var(--rust);
   border-radius:50%;
   display:grid;
   place-items:center;
-  font-family:var(--mono);
-  font-size:.65rem;
+  flex-shrink:0;
 }
+.proof-icon svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
 .proof-item span{
   font-family:var(--mono);
   font-size:.65rem;
@@ -707,7 +707,8 @@ nav a:hover{color:var(--green)}
 }
 .contact-row{display:flex;gap:12px;align-items:center;min-height:44px;color:inherit;text-decoration:none}
 a.contact-row:hover{text-decoration:underline;text-underline-offset:3px}
-.contact-icon{width:28px;height:28px;border:1px solid var(--green);border-radius:50%;display:grid;place-items:center}
+.contact-icon{width:34px;height:34px;border:1px solid var(--green);border-radius:50%;display:grid;place-items:center;flex-shrink:0;font-family:var(--mono);font-size:.72rem;font-weight:600}
+.contact-icon svg{width:17px;height:17px;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
 .contact-stamp{justify-self:end}
 .contact-stamp .stamp{width:110px;font-size:.62rem}
 .contact-stamp .stamp b{font-size:1.8rem}
@@ -980,15 +981,15 @@ nav a:hover::after{width:100%}
 
         <div class="hero-proof">
           <div class="proof-item">
-            <span class="proof-icon" aria-hidden="true">✓</span>
+            <span class="proof-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7 5V8l-7 5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"></path><path d="M17 18h1"></path><path d="M12 18h1"></path><path d="M7 18h1"></path></svg></span>
             <span>11 years in manufacturing</span>
           </div>
           <div class="proof-item">
-            <span class="proof-icon" aria-hidden="true">◇</span>
+            <span class="proof-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12.586 2.586A2 2 0 0 0 11.172 2H4a2 2 0 0 0-2 2v7.172a2 2 0 0 0 .586 1.414l8.704 8.704a2.426 2.426 0 0 0 3.42 0l6.58-6.58a2.426 2.426 0 0 0 0-3.42z"></path><circle cx="7.5" cy="7.5" r=".5"></circle></svg></span>
             <span>Fixed price projects</span>
           </div>
           <div class="proof-item">
-            <span class="proof-icon" aria-hidden="true">⌁</span>
+            <span class="proof-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21.3 8.7 15.3 2.7a2.41 2.41 0 0 0-3.4 0L2.7 11.9a2.41 2.41 0 0 0 0 3.4l6 6a2.41 2.41 0 0 0 3.4 0l9.2-9.2a2.41 2.41 0 0 0 0-3.4Z"></path><path d="m14.5 12.5 2-2"></path><path d="m11.5 9.5 2-2"></path><path d="m8.5 15.5 2-2"></path><path d="m5.5 12.5 2-2"></path></svg></span>
             <span>Tools that fit your operation</span>
           </div>
         </div>
@@ -1271,9 +1272,11 @@ nav a:hover::after{width:100%}
         <p class="contact-pitch"><span class="capline capline-open">No pitch. No jargon. Just a chat about the job that's eating your time, and an honest answer on whether I can help.</span><span class="capline capline-waitlist">I'm mid-build for another business right now, so new projects join a short waitlist. Tell me about the job anyway and I'll come back to you with an honest timeline.</span><span class="capline capline-closed">I'm fully booked and not starting new projects until September. Register your interest and you'll be first to hear when a slot opens.</span></p>
       </div>
       <div class="contact-details">
-        <a class="contact-row" href="mailto:jordan@jscworkshop.co.uk"><span class="contact-icon" aria-hidden="true">✉</span><span>jordan@jscworkshop.co.uk</span></a>
+        <a class="contact-row" href="mailto:jordan@jscworkshop.co.uk"><span class="contact-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg></span><span>jordan@jscworkshop.co.uk</span></a>
         <a class="contact-row" href="https://www.linkedin.com/in/jordan-crombie-3b1415419/" target="_blank" rel="noopener"><span class="contact-icon" aria-hidden="true">in</span><span>LinkedIn</span></a>
-        <div class="contact-row"><span class="contact-icon" aria-hidden="true">☎</span><span>07800 123456</span></div>
+        <!-- Phone row parked until the real number exists. Reinstate as a tel: anchor
+             matching the rows beside it; never publish placeholder digits. -->
+
       </div>
       <div class="contact-stamp">
         <div class="stamp"><span>Built around<b>JSC</b>how you work</span></div>
