@@ -13,6 +13,13 @@ jscworkshop.co.uk. Read this before editing anything.
   card, because link crawlers will not accept an SVG or a data URI
   and need a real file at an absolute URL. Images may live beside
   index.html. Code and styles may not.
+  Two further agreed exceptions are robots.txt and sitemap.xml, the
+  crawler plumbing added 2026-07-21. By convention these must be real
+  files at the site root and cannot be inlined; they are the only
+  non-image files permitted beside index.html. sitemap.xml lastmod is
+  the commit date of the index.html change it ships with, in
+  YYYY-MM-DD form, never a future date; its loc must byte-match the
+  canonical (with the trailing slash).
 - No analytics, no trackers, no external requests except Google Fonts.
 - Must work with JavaScript disabled (content readable, reveal
   animations simply don't run). Respect prefers-reduced-motion.
