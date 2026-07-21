@@ -592,16 +592,6 @@ nav a:hover{color:var(--green)}
   margin-bottom:12px;
 }
 .rate-card p{font-size:.92rem;max-width:44ch}
-.rc-cols{
-  display:block;
-  margin-top:12px;
-  font-family:var(--mono);
-  font-size:.6rem;
-  text-transform:uppercase;
-  letter-spacing:.08em;
-  color:var(--rust);
-  font-weight:600;
-}
 .rc-rows{margin-top:8px;border-top:1px dotted #A99D8C}
 .rc-row{
   display:flex;
@@ -623,9 +613,7 @@ nav a:hover{color:var(--green)}
   color:var(--green);
   text-align:right;
 }
-.rc-was{text-decoration:line-through;color:var(--muted);font-weight:400;white-space:nowrap}
 .rc-now{white-space:nowrap}
-.rate-card .rc-compare{padding:12px 0 0;font-family:var(--mono);font-size:.7rem;color:var(--muted);line-height:1.5}
 .rc-door{margin-top:14px}
 .rc-foot{margin-top:10px}
 @media(max-width:880px){
@@ -1119,7 +1107,7 @@ nav a:hover::after{width:100%}
         <span class="kicker">Software for real operations</span>
         <h1>I build tools that make work <span>run smoothly.</span></h1>
         <p class="lede">Custom software for the everyday jobs that slow the day down. Built around how you actually work, not the other way round.</p>
-        <p class="lede-range">From one person with a van to a hundred on a shop floor. Factory, office, or the desk in between.</p>
+        <p class="lede-range">It doesn't matter what your business is, only whether there's a job in it that takes longer than it should.</p>
 
         <div class="hero-proof">
           <div class="proof-item">
@@ -1279,7 +1267,7 @@ nav a:hover::after{width:100%}
         <div class="rc-copy">
           <span class="section-label">What it costs</span>
           <p>Every project is quoted as one fixed price, agreed before I start building. The quote comes after the first two steps, because guessing at a number before I understand the job helps neither of us.</p>
-          <p>This is one price, once, and then the tool is yours.</p>
+          <p>You pay it once, and then the tool is yours.</p>
           <p>No hourly rate ticking away in the background, and no invoice that turns up larger than you were expecting. If the price is not right for you, say so and we will leave it there. Asking costs nothing.</p>
           <p>Nothing you rely on is rented from me. What I build for you carries on working with or without me around. The tool is yours, code and all, to keep or hand to someone else.</p>
           <p>What is yours stays yours: the tool, your data, the way it fits how you work. What stays with me is the method. You get the benefit of every job that came before yours.</p>
@@ -1290,17 +1278,16 @@ nav a:hover::after{width:100%}
           <span class="rc-id">Rate card · JSC-02</span>
           <h3 class="rc-title">What a job starts at</h3>
           <span class="rc-hint">Examples · starting prices</span>
-          <p class="rc-lead">The workshop is young and the prices say so.</p>
-          <span class="rc-cols">Renting, every year → yours, once</span>
+          <p class="rc-lead">New to business, not to the work.</p>
           <dl class="rc-rows">
-            <div class="rc-row"><dt class="rc-job">The weekly report, rebuilt from your spreadsheets</dt><dd class="rc-price"><s class="rc-was">£130-£650 / year</s><span class="rc-now">from £1,000</span></dd></div>
-            <div class="rc-row"><dt class="rc-job">A tracker: absence, kit, paperwork</dt><dd class="rc-price"><s class="rc-was">£300-£2,100 / year</s><span class="rc-now">from £1,000</span></dd></div>
-            <div class="rc-row"><dt class="rc-job">A cover and training planner</dt><dd class="rc-price"><s class="rc-was">£1,000-£2,250 / year</s><span class="rc-now">from £1,500</span></dd></div>
+            <div class="rc-row"><dt class="rc-job">Small tools for a business starting out</dt><dd class="rc-price"><span class="rc-now">from £300</span></dd></div>
+            <div class="rc-row"><dt class="rc-job">The weekly report, rebuilt from your spreadsheets</dt><dd class="rc-price"><span class="rc-now">from £1,000</span></dd></div>
+            <div class="rc-row"><dt class="rc-job">A tracker: absence, kit, paperwork</dt><dd class="rc-price"><span class="rc-now">from £1,000</span></dd></div>
+            <div class="rc-row"><dt class="rc-job">A cover and training planner</dt><dd class="rc-price"><span class="rc-now">from £1,500</span></dd></div>
             <div class="rc-row"><dt class="rc-job">Something else entirely</dt><dd class="rc-price"><span class="rc-now">quoted on the job</span></dd></div>
           </dl>
-          <p class="rc-compare">Rental figures: typical UK list prices, checked July 2026.</p>
-          <p class="rc-door">If your job is not on the card, it still goes on the job sheet.</p>
-          <p class="rc-foot">Either way the price is agreed before I start, and it does not move.</p>
+          <p class="rc-door">If your job isn't on the card, it still goes on the job sheet.</p>
+          <p class="rc-foot">These are starting points, so the number moves with the job. Whatever yours comes to, you agree it before I start, and then it's fixed.</p>
         </aside>
       </div>
     </div>
@@ -1403,8 +1390,8 @@ nav a:hover::after{width:100%}
       <div class="person-letter">
         <span class="route-id">Form JSC-05 · On file</span>
         <p>Eleven years on an engine plant floor, every shift pattern going, teams that each worked their own way. I spent that time noticing where the hours went: the job that takes a morning because two systems don't talk, the plan that only exists in someone's head.</p>
-        <p>The first thing I built was a fix for something I'd noticed myself, and once I'd built one, I knew I could build the rest: a cover and training planner, an absence tracker for a school office, the Pseudonymiser anyone can try free in their browser. Self-taught, and better with every build. The absence tracker took one conversation: they had nothing for it, and I came back with the tool built.</p>
-        <p>JSC Workshop is one person: me. You talk to the person who builds the thing, so nothing gets lost in a handover. The work runs from one person with a van to a hundred on a shop floor.</p>
+        <p>The first thing I built came from a problem I kept seeing on the floor: when someone was off, working out who could cover them meant piecing together shifts, qualifications and availability by hand. So I built something to make it easier. Once I saw how much difference one well-fitted tool could make, I wanted to keep going. Since then, I've built an absence tracker for a school office and the Pseudonymiser, which anyone can try free in their browser. I'm self-taught, and I get better with every build. The absence tracker started with one conversation. They told me what they were struggling with, and I came back with something built around the way they worked.</p>
+        <p>JSC Workshop is one person: me. You talk to the person who builds the thing, so nothing gets lost in a handover.</p>
         <p>I build tools that help people do their jobs, not tools that do people out of them. Though when you run the place alone, the right tool is the extra pair of hands there was never money for.</p>
         <div class="letter-foot">
           <svg class="ink-stamp" viewBox="0 0 1000 1000" aria-hidden="true" focusable="false">
