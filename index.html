@@ -592,17 +592,39 @@ nav a:hover{color:var(--green)}
   margin-bottom:12px;
 }
 .rate-card p{font-size:.92rem;max-width:44ch}
-.rc-rows{margin-top:12px;border-top:1px dotted #A99D8C}
+.rc-cols{
+  display:block;
+  margin-top:12px;
+  font-family:var(--mono);
+  font-size:.6rem;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+  color:var(--rust);
+  font-weight:600;
+}
+.rc-rows{margin-top:8px;border-top:1px dotted #A99D8C}
 .rc-row{
   display:flex;
   justify-content:space-between;
-  align-items:baseline;
+  align-items:flex-start;
   gap:16px;
   padding:12px 0;
   border-bottom:1px dotted #A99D8C;
 }
 .rc-job{font-family:var(--mono);font-size:.7rem;line-height:1.5}
-.rc-price{font-family:var(--mono);font-size:.7rem;font-weight:600;color:var(--green);white-space:nowrap;text-align:right}
+.rc-price{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-end;
+  gap:2px;
+  font-family:var(--mono);
+  font-size:.7rem;
+  font-weight:600;
+  color:var(--green);
+  text-align:right;
+}
+.rc-was{text-decoration:line-through;color:var(--muted);font-weight:400;white-space:nowrap}
+.rc-now{white-space:nowrap}
 .rate-card .rc-compare{padding:12px 0 0;font-family:var(--mono);font-size:.7rem;color:var(--muted);line-height:1.5}
 .rc-foot{margin-top:14px}
 @media(max-width:880px){
@@ -1277,13 +1299,14 @@ nav a:hover::after{width:100%}
           <h3 class="rc-title">What a job starts at</h3>
           <span class="rc-hint">Kinds of job · starting prices</span>
           <p class="rc-lead">The workshop is young and the prices say so.</p>
+          <span class="rc-cols">Renting, every year → yours, once</span>
           <dl class="rc-rows">
-            <div class="rc-row"><dt class="rc-job">The weekly report, rebuilt from your spreadsheets</dt><dd class="rc-price">from £1,000</dd></div>
-            <div class="rc-row"><dt class="rc-job">A tracker: absence, kit, paperwork</dt><dd class="rc-price">from £1,000</dd></div>
-            <div class="rc-row"><dt class="rc-job">A cover and training planner</dt><dd class="rc-price">from £1,500</dd></div>
-            <div class="rc-row"><dt class="rc-job">More moving parts than that</dt><dd class="rc-price">quoted on the job</dd></div>
+            <div class="rc-row"><dt class="rc-job">The weekly report, rebuilt from your spreadsheets</dt><dd class="rc-price"><s class="rc-was">£130-£650 / year</s><span class="rc-now">from £1,000</span></dd></div>
+            <div class="rc-row"><dt class="rc-job">A tracker: absence, kit, paperwork</dt><dd class="rc-price"><s class="rc-was">£300-£2,100 / year</s><span class="rc-now">from £1,000</span></dd></div>
+            <div class="rc-row"><dt class="rc-job">A cover and training planner</dt><dd class="rc-price"><s class="rc-was">£1,000-£2,250 / year</s><span class="rc-now">from £1,500</span></dd></div>
+            <div class="rc-row"><dt class="rc-job">More moving parts than that</dt><dd class="rc-price"><span class="rc-now">quoted on the job</span></dd></div>
           </dl>
-          <p class="rc-compare">The rental version of these jobs: a few hundred to a couple of thousand pounds a year, every year.</p>
+          <p class="rc-compare">Rental figures: typical UK list prices, checked July 2026.</p>
           <p class="rc-foot">Either way the price is agreed before I start, and it does not move.</p>
         </aside>
       </div>
