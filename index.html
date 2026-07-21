@@ -195,7 +195,7 @@ nav a:hover{color:var(--green)}
 }
 .section-heading .num{color:var(--rust);font-family:var(--mono);font-size:.72rem;font-weight:600}
 
-.hero{padding:64px 0 48px}
+.hero{padding:28px 0 48px}
 .hero-grid{
   display:grid;
   grid-template-columns:1.05fr .95fr;
@@ -204,7 +204,7 @@ nav a:hover{color:var(--green)}
 }
 .hero-copy{
   position:relative;
-  padding:42px 30px 34px 38px;
+  padding:24px 30px 34px 38px;
 }
 .hero-copy::before{
   content:"";
@@ -685,6 +685,12 @@ nav a:hover{color:var(--green)}
   .demo-line{grid-template-columns:repeat(3,1fr)}
   .demo-crew{grid-template-columns:1fr}
 }
+@media(max-width:390px){
+  /* On the narrowest phones the fixed sidebar plus the main min-width overran the row. Trim the decorative sidebar and let the main column shrink to fit. */
+  .demo-panel{grid-template-columns:52px minmax(0,1fr)}
+  .demo-sidebar{padding:18px 4px}
+  .demo-main{padding:13px}
+}
 
 .contact{padding:18px 0 0}
 .contact-panel{
@@ -760,6 +766,10 @@ dialog.jobsheet::backdrop{background:rgba(23,27,24,.45);backdrop-filter:blur(2px
 }
 .jobsheet textarea{min-height:110px;resize:vertical}
 .jobsheet input:focus,.jobsheet textarea:focus,.jobsheet select:focus{outline:3px solid var(--rust);outline-offset:2px}
+/* Touch devices auto-zoom when a focused field is under 16px; the dialog focuses a field on open, so hold fields at 16px on coarse pointers to stop the zoom. Desktop keeps the tighter mono size. */
+@media (pointer: coarse){
+  .jobsheet input,.jobsheet textarea,.jobsheet select{font-size:16px}
+}
 .jobsheet-actions{display:flex;gap:12px;margin-top:22px;flex-wrap:wrap;align-items:center}
 .jobsheet .close-x{
   position:absolute;top:12px;right:12px;width:34px;height:34px;
