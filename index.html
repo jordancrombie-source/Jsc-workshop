@@ -228,6 +228,13 @@ nav a:hover{color:var(--green)}
   font-family:var(--mono);
   line-height:1.65;
 }
+.lede-range{
+  margin-top:14px;
+  font-family:var(--mono);
+  font-size:.72rem;
+  color:var(--muted);
+  max-width:52ch;
+}
 .hero-proof{
   display:flex;
   flex-wrap:wrap;
@@ -361,7 +368,8 @@ nav a:hover{color:var(--green)}
 }
 @media(max-width:1020px){
   .hero-grid{display:block;max-width:920px}
-  .hero-visual{display:none}
+  .hero-visual{margin-top:36px}
+  .hero-card{transform:none}
 }
 
 .jobs{padding:28px 0 26px}
@@ -517,6 +525,123 @@ nav a:hover{color:var(--green)}
 }
 .price-note p{max-width:68ch;font-size:.95rem}
 
+/* rate card: the starting prices, pinned beside the cost notes */
+.price-note.rate-note{
+  grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);
+  gap:20px 48px;
+  align-items:center;
+  padding:26px 30px;
+}
+.rc-copy{display:grid;gap:12px;min-width:0}
+.rate-card{
+  position:relative;
+  width:min(400px,100%);
+  justify-self:center;
+  margin:10px 0;
+  padding:34px 24px 22px;
+  background:
+    radial-gradient(circle at 8% 15%,rgba(105,84,53,.08),transparent 22rem),
+    var(--paper-card);
+  border:1px solid #C9BDA8;
+  box-shadow:0 3px 9px rgba(64,49,31,.14);
+  transform:rotate(.9deg);
+}
+.rate-card::before{
+  content:"";
+  position:absolute;
+  top:8px;left:50%;
+  width:15px;height:15px;
+  transform:translateX(-50%);
+  border-radius:50%;
+  border:3px solid #8F7758;
+  background:var(--paper);
+  box-shadow:inset 0 0 0 2px rgba(255,255,255,.7);
+}
+.rate-card::after{
+  content:"";
+  position:absolute;
+  right:0;bottom:0;
+  border-top:18px solid transparent;
+  border-left:18px solid transparent;
+  border-right:18px solid #D8C9B3;
+}
+.rc-id{
+  display:block;
+  font-family:var(--mono);
+  color:var(--rust);
+  font-size:.63rem;
+  text-transform:uppercase;
+  font-weight:600;
+  padding-bottom:10px;
+  border-bottom:1px dotted #A99D8C;
+}
+.rc-id::after{
+  content:"";
+  position:absolute;top:32px;right:20px;
+  width:54px;height:13px;opacity:.7;
+  background:repeating-linear-gradient(90deg,var(--ink) 0 1.5px,transparent 1.5px 3.5px,var(--ink) 3.5px 6.5px,transparent 6.5px 8px);
+}
+.rc-title{font-size:1.7rem;margin:16px 0 4px}
+.rc-hint{
+  display:block;
+  font-family:var(--mono);
+  font-size:.62rem;
+  text-transform:uppercase;
+  letter-spacing:.06em;
+  color:var(--muted);
+  margin-bottom:12px;
+}
+.rate-card p{font-size:.92rem;max-width:44ch}
+.rc-cols{
+  display:block;
+  margin-top:12px;
+  font-family:var(--mono);
+  font-size:.6rem;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+  color:var(--rust);
+  font-weight:600;
+}
+.rc-rows{margin-top:8px;border-top:1px dotted #A99D8C}
+.rc-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:16px;
+  padding:12px 0;
+  border-bottom:1px dotted #A99D8C;
+}
+.rc-job{font-family:var(--mono);font-size:.7rem;line-height:1.5}
+.rc-price{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-end;
+  gap:2px;
+  font-family:var(--mono);
+  font-size:.7rem;
+  font-weight:600;
+  color:var(--green);
+  text-align:right;
+}
+.rc-was{text-decoration:line-through;color:var(--muted);font-weight:400;white-space:nowrap}
+.rc-now{white-space:nowrap}
+.rate-card .rc-compare{padding:12px 0 0;font-family:var(--mono);font-size:.7rem;color:var(--muted);line-height:1.5}
+.rc-foot{margin-top:14px}
+@media(max-width:880px){
+  .price-note.rate-note{grid-template-columns:1fr;gap:12px}
+  .rate-card{transform:none;justify-self:start;width:min(440px,100%);margin:14px 0 4px}
+}
+@media(max-width:520px){
+  .price-note.rate-note{padding:20px 16px}
+  .rate-card{padding:30px 18px 20px}
+  .rc-id::after{right:16px}
+  .rc-title{font-size:1.4rem}
+  /* narrow screens: the job takes the full line, the price drops beneath it, right-aligned like a receipt */
+  .rc-row{flex-wrap:wrap;gap:3px 16px}
+  .rc-job{flex:1 1 100%}
+  .rc-price{margin-left:auto}
+}
+
 .person{padding:26px 0 34px}
 .person-letter{
   position:relative;
@@ -556,18 +681,9 @@ nav a:hover{color:var(--green)}
 .letter-foot{
   display:flex;
   align-items:flex-end;
-  justify-content:space-between;
+  justify-content:flex-end;
   gap:18px;
   margin-top:6px;
-}
-.letter-sig{
-  font-family:var(--mono);
-  font-size:.68rem;
-  font-weight:600;
-  letter-spacing:.06em;
-  text-transform:uppercase;
-  color:var(--muted);
-  padding-bottom:26px;
 }
 .ink-stamp{
   width:150px;height:150px;
@@ -645,17 +761,19 @@ nav a:hover{color:var(--green)}
   display:inline-block;
   margin-top:16px;
   min-height:44px;
-  padding:9px 16px;
-  border:1px solid var(--rule);
-  background:transparent;
-  color:var(--ink);
+  padding:9px 18px;
+  border:1px solid var(--green);
+  background:var(--green);
+  color:var(--paper);
   font-family:var(--mono);
   font-size:.62rem;
+  font-weight:600;
   text-transform:uppercase;
   letter-spacing:.08em;
   cursor:pointer;
+  transition:transform .18s ease, background .18s ease;
 }
-.demo-go:hover{background:var(--paper-card)}
+.demo-go:hover{background:var(--green-dark);transform:translateY(-2px)}
 .demo-plan{display:none;margin-top:14px;border-top:1px solid var(--soft-rule);padding-top:12px}
 .demo-panel.planned .demo-plan{display:block}
 .js .demo-panel.planned .demo-go{display:none}
@@ -776,7 +894,20 @@ dialog.jobsheet::backdrop{background:rgba(23,27,24,.45);backdrop-filter:blur(2px
   border:1px solid var(--ink);background:var(--paper-light);color:var(--ink);
   font-family:var(--mono);font-size:.9rem;cursor:pointer;
 }
-.jobsheet .mailto-alt{font-family:var(--mono);font-size:.62rem;color:var(--muted)}
+.jobsheet .mailto-alt{margin-top:14px;font-family:var(--mono);font-size:.62rem;color:var(--muted)}
+.jobsheet .mailto-alt a{color:var(--ink);font-weight:600}
+/* short phone screens: the whole sheet, note and both buttons must sit above the dialog's scroll fold */
+@media (max-height:720px){
+  .jobsheet-inner{padding:22px 18px 14px}
+  .jobsheet h3{margin:10px 0 4px;font-size:1.35rem}
+  .jobsheet .hint{margin-bottom:10px}
+  .jobsheet label{margin:9px 0 5px}
+  .jobsheet textarea{min-height:64px}
+  .jobsheet input,.jobsheet textarea,.jobsheet select{padding:9px 11px}
+  .jobsheet .mailto-alt{margin-top:10px}
+  .jobsheet-actions{margin-top:10px}
+  .jobsheet .button{min-height:44px}
+}
 
 
 /* ---- from the workshop (free tool) ---- */
@@ -860,7 +991,7 @@ nav a:hover::after{width:100%}
 .js .in{opacity:1;translate:0 0}
 @media(prefers-reduced-motion:reduce){
   .js .route-card,.js .process-step,.js .demo-panel,.js .contact-panel{opacity:1;translate:0 0;transition:none}
-  .route-card,.button,.hero-card{transition:none}
+  .route-card,.button,.hero-card,.demo-go{transition:none}
 }
 
 @media(prefers-reduced-motion:reduce){
@@ -891,15 +1022,15 @@ nav a:hover::after{width:100%}
   }
   body::before{opacity:.18}
   header{background:rgba(24,28,24,.92)}
-  .button:not(.outline):hover{background:#A8CDBB}
+  .button:not(.outline):hover,.demo-go:hover{background:#A8CDBB}
   [data-capacity="open"] .status-dot{background:#5FBF8A}
   [data-capacity="closed"] .status-dot{background:var(--rust)}
   .status-sign{box-shadow:2px 2px 0 rgba(0,0,0,.4)}
-  .route-card,.hero-card,.person-letter{border-color:#3A4039;box-shadow:0 3px 9px rgba(0,0,0,.35)}
+  .route-card,.hero-card,.person-letter,.rate-card{border-color:#3A4039;box-shadow:0 3px 9px rgba(0,0,0,.35)}
   dialog.jobsheet{border-color:#3A4039}
-  .route-card::after,.hero-card::after{border-right-color:#333A33}
-  .route-card::before,.hero-card::before,.jobsheet-inner::before,.person-letter::before{border-color:#6B5A44;box-shadow:inset 0 0 0 2px rgba(255,255,255,.1)}
-  .route-card .route-id,.route-card h3,.route-block,.hero-card .route-id,.hc-field,.hc-rule,.jobsheet .route-id{border-color:#4C5248}
+  .route-card::after,.hero-card::after,.rate-card::after{border-right-color:#333A33}
+  .route-card::before,.hero-card::before,.jobsheet-inner::before,.person-letter::before,.rate-card::before{border-color:#6B5A44;box-shadow:inset 0 0 0 2px rgba(255,255,255,.1)}
+  .route-card .route-id,.route-card h3,.route-block,.hero-card .route-id,.hc-field,.hc-rule,.jobsheet .route-id,.rc-id,.rc-rows,.rc-row{border-color:#4C5248}
   .jobsheet input,.jobsheet textarea,.jobsheet select{border-color:#4C5248}
   .cardrow .route-card:hover,.hero-card:hover{box-shadow:0 12px 24px rgba(0,0,0,.5)}
   .stat-box,.demo-cell{background:var(--paper-light)}
@@ -931,12 +1062,12 @@ nav a:hover::after{width:100%}
   body::before,.skip-link,nav,.button,.more-link,dialog.jobsheet{display:none}
   header{position:static;background:transparent;backdrop-filter:none}
   .js .route-card,.js .process-step,.js .demo-panel,.js .contact-panel{opacity:1;translate:0 0;transition:none}
-  .route-card,.hero-card,.demo-panel,.contact-panel,.process-step,.tool-card,.person-letter{break-inside:avoid;box-shadow:none}
+  .route-card,.hero-card,.demo-panel,.contact-panel,.process-step,.tool-card,.person-letter,.rate-card{break-inside:avoid;box-shadow:none}
   .demo-go,.demo-reset{display:none!important}
-  .cardrow .route-card,.hero-card,.status-sign{transform:none}
+  .cardrow .route-card,.hero-card,.status-sign,.rate-card{transform:none}
   .contact-panel{background:transparent}
-  .route-card,.hero-card{border-color:var(--rule)}
-  .route-card::after,.hero-card::after{border-right-color:var(--soft-rule)}
+  .route-card,.hero-card,.rate-card{border-color:var(--rule)}
+  .route-card::after,.hero-card::after,.rate-card::after{border-right-color:var(--soft-rule)}
 }
 </style>
 </head>
@@ -987,6 +1118,7 @@ nav a:hover::after{width:100%}
         <span class="kicker">Software for real operations</span>
         <h1>I build tools that make work <span>run smoothly.</span></h1>
         <p class="lede">Custom software for the everyday jobs that slow the day down. Built around how you actually work, not the other way round.</p>
+        <p class="lede-range">From one person with a van to a hundred on a shop floor. Factory, office, or the desk in between.</p>
 
         <div class="hero-proof">
           <div class="proof-item">
@@ -1123,7 +1255,7 @@ nav a:hover::after{width:100%}
         <article class="process-step">
           <div class="process-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"></circle><path d="m20.5 20.5-4.4-4.4"></path></svg></div>
           <h3>Understand</h3>
-          <p>I spend a day in your operation, listen to the people doing the work and map the friction.</p>
+          <p>The first step scales to the job. A shop floor is a day on site; a one-person round can be a quick call. I listen to the people doing the work and map the friction.</p>
         </article>
         <article class="process-step">
           <div class="process-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="2.5"></rect><path d="m8 12.5 3 3 5.5-6.5"></path></svg></div>
@@ -1138,16 +1270,36 @@ nav a:hover::after{width:100%}
         <article class="process-step">
           <div class="process-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 17.5 9.5 11l4 4L21 7"></path><path d="M15.5 7H21v5.5"></path></svg></div>
           <h3>Improve</h3>
-          <p>Ongoing support and small improvements as your operation evolves.</p>
+          <p>Faults are mine to fix, free. Improvements are quoted as your operation evolves.</p>
         </article>
       </div>
 
-      <div class="price-note">
-        <span class="section-label">What it costs</span>
-        <p>Every project is quoted as one fixed price, agreed before I start building. The quote comes after the first two steps, because guessing at a number before I understand the job helps neither of us.</p>
-        <p>No hourly rate ticking away in the background, and no invoice that turns up larger than you were expecting. If the price is not right for you, say so and we will leave it there. Asking costs nothing.</p>
-        <p>Nothing you rely on is rented from me. What I build for you carries on working with or without me around.</p>
-        <p>What is yours stays yours: the tool, your data, the way it fits how you work. What stays with me is the method. You get the benefit of every job that came before yours.</p>
+      <div class="price-note rate-note">
+        <div class="rc-copy">
+          <span class="section-label">What it costs</span>
+          <p>Every project is quoted as one fixed price, agreed before I start building. The quote comes after the first two steps, because guessing at a number before I understand the job helps neither of us.</p>
+          <p>This is one price, once, and then the tool is yours.</p>
+          <p>No hourly rate ticking away in the background, and no invoice that turns up larger than you were expecting. If the price is not right for you, say so and we will leave it there. Asking costs nothing.</p>
+          <p>Nothing you rely on is rented from me. What I build for you carries on working with or without me around. The tool is yours, code and all, to keep or hand to someone else.</p>
+          <p>What is yours stays yours: the tool, your data, the way it fits how you work. What stays with me is the method. You get the benefit of every job that came before yours.</p>
+          <p>No new system to move into. The tool sits alongside the systems you already use and takes its data straight from your spreadsheets.</p>
+          <p>The first month after handover is free, tweaks included, while the tool beds into real use. After that the deal is simple: if it stops doing what we agreed, I fix it for nothing. New features are new work, quoted like any job.</p>
+        </div>
+        <aside class="rate-card">
+          <span class="rc-id">Rate card · JSC-02</span>
+          <h3 class="rc-title">What a job starts at</h3>
+          <span class="rc-hint">Kinds of job · starting prices</span>
+          <p class="rc-lead">The workshop is young and the prices say so.</p>
+          <span class="rc-cols">Renting, every year → yours, once</span>
+          <dl class="rc-rows">
+            <div class="rc-row"><dt class="rc-job">The weekly report, rebuilt from your spreadsheets</dt><dd class="rc-price"><s class="rc-was">£130-£650 / year</s><span class="rc-now">from £1,000</span></dd></div>
+            <div class="rc-row"><dt class="rc-job">A tracker: absence, kit, paperwork</dt><dd class="rc-price"><s class="rc-was">£300-£2,100 / year</s><span class="rc-now">from £1,000</span></dd></div>
+            <div class="rc-row"><dt class="rc-job">A cover and training planner</dt><dd class="rc-price"><s class="rc-was">£1,000-£2,250 / year</s><span class="rc-now">from £1,500</span></dd></div>
+            <div class="rc-row"><dt class="rc-job">More moving parts than that</dt><dd class="rc-price"><span class="rc-now">quoted on the job</span></dd></div>
+          </dl>
+          <p class="rc-compare">Rental figures: typical UK list prices, checked July 2026.</p>
+          <p class="rc-foot">Either way the price is agreed before I start, and it does not move.</p>
+        </aside>
       </div>
     </div>
   </section>
@@ -1249,11 +1401,10 @@ nav a:hover::after{width:100%}
       <div class="person-letter">
         <span class="route-id">Form JSC-05 · On file</span>
         <p>Eleven years on an engine plant floor, every shift pattern going, teams that each worked their own way. I spent that time noticing where the hours went: the job that takes a morning because two systems don't talk, the plan that only exists in someone's head.</p>
-        <p>The first thing I built was a fix for something I'd noticed myself, and once I'd built one, I knew I could build the rest: a cover and training planner, an absence tracker for a school office, the Pseudonymiser anyone can try free in their browser. Self-taught, and better with every build.</p>
+        <p>The first thing I built was a fix for something I'd noticed myself, and once I'd built one, I knew I could build the rest: a cover and training planner, an absence tracker for a school office, the Pseudonymiser anyone can try free in their browser. Self-taught, and better with every build. The absence tracker took one conversation: they had nothing for it, and I came back with the tool built.</p>
         <p>JSC Workshop is one person: me. You talk to the person who builds the thing, so nothing gets lost in a handover. The work runs from one person with a van to a hundred on a shop floor.</p>
         <p>I build tools that help people do their jobs, not tools that do people out of them. Though when you run the place alone, the right tool is the extra pair of hands there was never money for.</p>
         <div class="letter-foot">
-          <span class="letter-sig">J. Crombie · The Black Country</span>
           <svg class="ink-stamp" viewBox="0 0 1000 1000" aria-hidden="true" focusable="false">
             <g fill="none" stroke="currentColor">
               <circle cx="500" cy="500" r="400" stroke-width="13"/>
@@ -1319,10 +1470,10 @@ nav a:hover::after{width:100%}
       <option>Now and then, but badly</option>
     </select>
 
+    <p class="mailto-alt" id="js-mailalt">Opens your email app with it all filled in. No app? The address is right here to copy.</p>
     <div class="jobsheet-actions">
       <button type="submit" class="button">Send the job sheet →</button>
       <button type="button" class="button outline" id="jobsheet-dismiss">Not now</button>
-      <span class="mailto-alt">Opens your email app with it all filled in.</span>
     </div>
   </form>
 </dialog>
@@ -1368,8 +1519,17 @@ if(!matchMedia('(prefers-reduced-motion: reduce)').matches){
   const form = document.getElementById("jobsheet-form");
   if(!dlg || !form) return;
 
+  // The address lives in the EMAIL const; render it into the note so it is never hardcoded twice
+  const alt = document.getElementById("js-mailalt");
+  if(alt){
+    const a = document.createElement("a");
+    a.href = "mailto:" + EMAIL;
+    a.textContent = EMAIL;
+    alt.append(" ", a);
+  }
+
   // Hero + contact buttons open the job sheet
-  document.querySelectorAll('a[href="#contact"], a.contact-row[href^="mailto:"]').forEach(el=>{
+  document.querySelectorAll('a[href="#contact"]').forEach(el=>{
     el.addEventListener("click", e=>{
       e.preventDefault();
       dlg.showModal();
@@ -1399,7 +1559,6 @@ if(!matchMedia('(prefers-reduced-motion: reduce)').matches){
       job
     ].filter(Boolean).join("\n");
     window.location.href = "mailto:" + EMAIL + "?subject=" + encodeURIComponent(subj) + "&body=" + encodeURIComponent(body);
-    dlg.close();
   });
 })();
 </script>
