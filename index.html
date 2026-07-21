@@ -525,6 +525,101 @@ nav a:hover{color:var(--green)}
 }
 .price-note p{max-width:68ch;font-size:.95rem}
 
+/* rate card: the starting prices, pinned beside the cost notes */
+.price-note.rate-note{
+  grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);
+  gap:20px 48px;
+  align-items:center;
+  padding:26px 30px;
+}
+.rc-copy{display:grid;gap:12px;min-width:0}
+.rate-card{
+  position:relative;
+  width:min(400px,100%);
+  justify-self:center;
+  margin:10px 0;
+  padding:34px 24px 22px;
+  background:
+    radial-gradient(circle at 8% 15%,rgba(105,84,53,.08),transparent 22rem),
+    var(--paper-card);
+  border:1px solid #C9BDA8;
+  box-shadow:0 3px 9px rgba(64,49,31,.14);
+  transform:rotate(.9deg);
+}
+.rate-card::before{
+  content:"";
+  position:absolute;
+  top:8px;left:50%;
+  width:15px;height:15px;
+  transform:translateX(-50%);
+  border-radius:50%;
+  border:3px solid #8F7758;
+  background:var(--paper);
+  box-shadow:inset 0 0 0 2px rgba(255,255,255,.7);
+}
+.rate-card::after{
+  content:"";
+  position:absolute;
+  right:0;bottom:0;
+  border-top:18px solid transparent;
+  border-left:18px solid transparent;
+  border-right:18px solid #D8C9B3;
+}
+.rc-id{
+  display:block;
+  font-family:var(--mono);
+  color:var(--rust);
+  font-size:.63rem;
+  text-transform:uppercase;
+  font-weight:600;
+  padding-bottom:10px;
+  border-bottom:1px dotted #A99D8C;
+}
+.rc-id::after{
+  content:"";
+  position:absolute;top:32px;right:20px;
+  width:54px;height:13px;opacity:.7;
+  background:repeating-linear-gradient(90deg,var(--ink) 0 1.5px,transparent 1.5px 3.5px,var(--ink) 3.5px 6.5px,transparent 6.5px 8px);
+}
+.rc-title{font-size:1.7rem;margin:16px 0 4px}
+.rc-hint{
+  display:block;
+  font-family:var(--mono);
+  font-size:.62rem;
+  text-transform:uppercase;
+  letter-spacing:.06em;
+  color:var(--muted);
+  margin-bottom:12px;
+}
+.rate-card p{font-size:.92rem;max-width:44ch}
+.rc-rows{margin-top:12px;border-top:1px dotted #A99D8C}
+.rc-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:baseline;
+  gap:16px;
+  padding:12px 0;
+  border-bottom:1px dotted #A99D8C;
+}
+.rc-job{font-family:var(--mono);font-size:.7rem;line-height:1.5}
+.rc-price{font-family:var(--mono);font-size:.7rem;font-weight:600;color:var(--green);white-space:nowrap;text-align:right}
+.rate-card .rc-compare{padding:12px 0 0;font-family:var(--mono);font-size:.7rem;color:var(--muted);line-height:1.5}
+.rc-foot{margin-top:14px}
+@media(max-width:880px){
+  .price-note.rate-note{grid-template-columns:1fr;gap:12px}
+  .rate-card{transform:none;justify-self:start;width:min(440px,100%);margin:14px 0 4px}
+}
+@media(max-width:520px){
+  .price-note.rate-note{padding:20px 16px}
+  .rate-card{padding:30px 18px 20px}
+  .rc-id::after{right:16px}
+  .rc-title{font-size:1.4rem}
+  /* narrow screens: the job takes the full line, the price drops beneath it, right-aligned like a receipt */
+  .rc-row{flex-wrap:wrap;gap:3px 16px}
+  .rc-job{flex:1 1 100%}
+  .rc-price{margin-left:auto}
+}
+
 .person{padding:26px 0 34px}
 .person-letter{
   position:relative;
@@ -918,11 +1013,11 @@ nav a:hover::after{width:100%}
   [data-capacity="open"] .status-dot{background:#5FBF8A}
   [data-capacity="closed"] .status-dot{background:var(--rust)}
   .status-sign{box-shadow:2px 2px 0 rgba(0,0,0,.4)}
-  .route-card,.hero-card,.person-letter{border-color:#3A4039;box-shadow:0 3px 9px rgba(0,0,0,.35)}
+  .route-card,.hero-card,.person-letter,.rate-card{border-color:#3A4039;box-shadow:0 3px 9px rgba(0,0,0,.35)}
   dialog.jobsheet{border-color:#3A4039}
-  .route-card::after,.hero-card::after{border-right-color:#333A33}
-  .route-card::before,.hero-card::before,.jobsheet-inner::before,.person-letter::before{border-color:#6B5A44;box-shadow:inset 0 0 0 2px rgba(255,255,255,.1)}
-  .route-card .route-id,.route-card h3,.route-block,.hero-card .route-id,.hc-field,.hc-rule,.jobsheet .route-id{border-color:#4C5248}
+  .route-card::after,.hero-card::after,.rate-card::after{border-right-color:#333A33}
+  .route-card::before,.hero-card::before,.jobsheet-inner::before,.person-letter::before,.rate-card::before{border-color:#6B5A44;box-shadow:inset 0 0 0 2px rgba(255,255,255,.1)}
+  .route-card .route-id,.route-card h3,.route-block,.hero-card .route-id,.hc-field,.hc-rule,.jobsheet .route-id,.rc-id,.rc-rows,.rc-row{border-color:#4C5248}
   .jobsheet input,.jobsheet textarea,.jobsheet select{border-color:#4C5248}
   .cardrow .route-card:hover,.hero-card:hover{box-shadow:0 12px 24px rgba(0,0,0,.5)}
   .stat-box,.demo-cell{background:var(--paper-light)}
@@ -954,12 +1049,12 @@ nav a:hover::after{width:100%}
   body::before,.skip-link,nav,.button,.more-link,dialog.jobsheet{display:none}
   header{position:static;background:transparent;backdrop-filter:none}
   .js .route-card,.js .process-step,.js .demo-panel,.js .contact-panel{opacity:1;translate:0 0;transition:none}
-  .route-card,.hero-card,.demo-panel,.contact-panel,.process-step,.tool-card,.person-letter{break-inside:avoid;box-shadow:none}
+  .route-card,.hero-card,.demo-panel,.contact-panel,.process-step,.tool-card,.person-letter,.rate-card{break-inside:avoid;box-shadow:none}
   .demo-go,.demo-reset{display:none!important}
-  .cardrow .route-card,.hero-card,.status-sign{transform:none}
+  .cardrow .route-card,.hero-card,.status-sign,.rate-card{transform:none}
   .contact-panel{background:transparent}
-  .route-card,.hero-card{border-color:var(--rule)}
-  .route-card::after,.hero-card::after{border-right-color:var(--soft-rule)}
+  .route-card,.hero-card,.rate-card{border-color:var(--rule)}
+  .route-card::after,.hero-card::after,.rate-card::after{border-right-color:var(--soft-rule)}
 }
 </style>
 </head>
@@ -1166,16 +1261,31 @@ nav a:hover::after{width:100%}
         </article>
       </div>
 
-      <div class="price-note">
-        <span class="section-label">What it costs</span>
-        <p>Every project is quoted as one fixed price, agreed before I start building. The quote comes after the first two steps, because guessing at a number before I understand the job helps neither of us.</p>
-        <p>The workshop is young and the prices say so: the smallest jobs start nearer £1,000, most from £1,500. Either way the price is agreed before I start, and it does not move.</p>
-        <p>The off-the-shelf version of most of these jobs is a subscription: a few hundred to a couple of thousand pounds a year, every year, for as long as you use it. This is one price, once, and then the tool is yours.</p>
-        <p>No hourly rate ticking away in the background, and no invoice that turns up larger than you were expecting. If the price is not right for you, say so and we will leave it there. Asking costs nothing.</p>
-        <p>Nothing you rely on is rented from me. What I build for you carries on working with or without me around. The tool is yours, code and all, to keep or hand to someone else.</p>
-        <p>What is yours stays yours: the tool, your data, the way it fits how you work. What stays with me is the method. You get the benefit of every job that came before yours.</p>
-        <p>No new system to move into. The tool sits alongside the systems you already use and takes its data straight from your spreadsheets.</p>
-        <p>The first month after handover is free, tweaks included, while the tool beds into real use. After that the deal is simple: if it stops doing what we agreed, I fix it for nothing. New features are new work, quoted like any job.</p>
+      <div class="price-note rate-note">
+        <div class="rc-copy">
+          <span class="section-label">What it costs</span>
+          <p>Every project is quoted as one fixed price, agreed before I start building. The quote comes after the first two steps, because guessing at a number before I understand the job helps neither of us.</p>
+          <p>This is one price, once, and then the tool is yours.</p>
+          <p>No hourly rate ticking away in the background, and no invoice that turns up larger than you were expecting. If the price is not right for you, say so and we will leave it there. Asking costs nothing.</p>
+          <p>Nothing you rely on is rented from me. What I build for you carries on working with or without me around. The tool is yours, code and all, to keep or hand to someone else.</p>
+          <p>What is yours stays yours: the tool, your data, the way it fits how you work. What stays with me is the method. You get the benefit of every job that came before yours.</p>
+          <p>No new system to move into. The tool sits alongside the systems you already use and takes its data straight from your spreadsheets.</p>
+          <p>The first month after handover is free, tweaks included, while the tool beds into real use. After that the deal is simple: if it stops doing what we agreed, I fix it for nothing. New features are new work, quoted like any job.</p>
+        </div>
+        <aside class="rate-card">
+          <span class="rc-id">Rate card · JSC-02</span>
+          <h3 class="rc-title">What a job starts at</h3>
+          <span class="rc-hint">Kinds of job · starting prices</span>
+          <p class="rc-lead">The workshop is young and the prices say so.</p>
+          <dl class="rc-rows">
+            <div class="rc-row"><dt class="rc-job">The weekly report, rebuilt from your spreadsheets</dt><dd class="rc-price">from £1,000</dd></div>
+            <div class="rc-row"><dt class="rc-job">A tracker: absence, kit, paperwork</dt><dd class="rc-price">from £1,000</dd></div>
+            <div class="rc-row"><dt class="rc-job">A cover and training planner</dt><dd class="rc-price">from £1,500</dd></div>
+            <div class="rc-row"><dt class="rc-job">More moving parts than that</dt><dd class="rc-price">quoted on the job</dd></div>
+          </dl>
+          <p class="rc-compare">The rental version of these jobs: a few hundred to a couple of thousand pounds a year, every year.</p>
+          <p class="rc-foot">Either way the price is agreed before I start, and it does not move.</p>
+        </aside>
       </div>
     </div>
   </section>
