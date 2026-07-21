@@ -15,8 +15,9 @@ jscworkshop.co.uk. Read this before editing anything.
   index.html. Code and styles may not.
   Two further agreed exceptions are robots.txt and sitemap.xml, the
   crawler plumbing added 2026-07-21. By convention these must be real
-  files at the site root and cannot be inlined; they are the only
-  non-image files permitted beside index.html. sitemap.xml lastmod is
+  files at the site root and cannot be inlined; they and the CNAME
+  file (see Deployment) are the only non-image files permitted
+  beside index.html. sitemap.xml lastmod is
   the commit date of the index.html change it ships with, in
   YYYY-MM-DD form, never a future date; its loc must byte-match the
   canonical (with the trailing slash).
@@ -71,6 +72,9 @@ jscworkshop.co.uk. Read this before editing anything.
 - The Pseudonymiser section links to the live tool at
   https://pseudonymiser.jscworkshop.co.uk/; keep that URL in sync if
   it moves.
+- There are deliberately NO twitter: meta tags. Jordan does not use
+  X, and the og: tags cover the platforms he shares to (WhatsApp,
+  LinkedIn, Facebook). Do not re-add Twitter card tags.
 - The 90-second demo film does not exist yet. The example section
   says a demo is on its way; swap that line for a real link once the
   film is made. Never link a demo that is not real.
