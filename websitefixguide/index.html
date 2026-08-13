@@ -396,7 +396,7 @@ header .rule{
     <h1>Links you cannot see</h1>
     <p class="lede">Someone may have put links or pages on your website that visitors never see, but search engines do. Here is how to check in one minute, what it costs you, and how to put it right, one click at a time.</p>
     <div class="rule"></div>
-    <p class="byline">Written by Jordan Crombie, JSC Workshop, Bilston. Free to copy and pass on.</p>
+    <p class="byline">Written by Jordan Crombie, JSC Workshop, Bilston. Free to copy and pass on. Last reviewed 13 August 2026.</p>
   </header>
 
   <section>
@@ -420,7 +420,7 @@ header .rule{
           <span class="note">Type it exactly like that: the word <span class="mono">site</span>, a colon, your address with no spaces, then a space, then the word.</span></li>
         <li>Then run it again swapping <span class="mark">casino</span> for <span class="mark">slots</span>, <span class="mark">gambling</span>, and <span class="mark">viagra</span>.</li>
       </ol>
-      <p class="outcome">A clean site returns nothing for any of these. If Google shows you pages on your own website about casinos, in any language, that is the problem, and you are looking at exactly what a customer would find. This works on a phone, needs nothing installed, and cannot be fooled by anything hidden.</p>
+      <p class="outcome">A clean site returns nothing for any of these. If Google shows you pages on your own website about casinos, in any language, that is the problem, and you are looking at exactly what a customer would find. This works on a phone, needs nothing installed, and cannot be fooled by anything hidden. One lone result is worth opening before you worry, because Google can briefly keep showing a page that has since been removed; a pile of them, especially in other languages, is the real thing.</p>
     </div>
 
     <p>The second check looks inside the page itself. It catches links that are hidden rather than published as pages, so it is worth doing as well, but it is fiddlier and one wrong step gives a falsely clean result.</p>
@@ -504,7 +504,7 @@ header .rule{
     <p>In this order, because the order matters. Each step below has a plain description, and under it an exact list of where to click, written for someone who has never been behind their own website. Read the step, then open the clicks.</p>
     <p class="note">These steps assume WordPress because most affected sites run it, but this is not a WordPress-only problem. Any site with a login and software behind it can be attacked the same way. If yours is built on something else, the steps still apply in the same order; only the names of the tools change.</p>
 
-    <div class="safety"><strong>The one rule that makes this safe:</strong> do step 1 first, and after that nothing you do here can lose your website, because you are holding a complete copy. And if any step defeats you, stop there. A half-finished fix plus a backup is a perfectly good place to hand over from, and the finding-out is already done.</div>
+    <div class="safety"><strong>The one rule that makes this safe:</strong> do step 1 first, and after that a mistake can be undone, because you are holding a copy to fall back on. Be clear about what that copy is: it preserves the site as it stands today, infection and all, so it is a fall-back, not a clean version. That is still exactly what you want before touching anything. And if any step defeats you, stop there. A half-finished fix plus a backup is a perfectly good place to hand over from, and the finding-out is already done.</div>
 
     <ol class="steps">
       <li>
@@ -518,7 +518,7 @@ header .rule{
               <li>Click <span class="path">Plugins</span>, then <span class="path">Add New Plugin</span>. In the search box at the top right, type <span class="mark">UpdraftPlus</span>.</li>
               <li>On the card called <strong>UpdraftPlus: WP Backup &amp; Migration Plugin</strong>, click <span class="path">Install Now</span>, wait, then click <span class="path">Activate</span>.</li>
               <li>Click <span class="path">Settings</span>, then <span class="path">UpdraftPlus Backups</span>. Click the big <span class="path">Backup Now</span> button, leave both ticked boxes as they are, and click <span class="path">Backup Now</span> again. A big site can take a while. That is normal, leave the tab open.</li>
-              <li>When it finishes, scroll to <strong>Existing backups</strong>. You will see a row of buttons: <span class="path">Database</span>, <span class="path">Plugins</span>, <span class="path">Themes</span>, <span class="path">Uploads</span>, <span class="path">Others</span>. Click each one in turn, then click <span class="path">Download to your computer</span>. Keep the files somewhere you can find them.</li>
+              <li>When it finishes, scroll to <strong>Existing backups</strong>. You will see a row of buttons: <span class="path">Database</span>, <span class="path">Plugins</span>, <span class="path">Themes</span>, <span class="path">Uploads</span>, <span class="path">Others</span>. Click each one in turn, then click <span class="path">Download to your computer</span>. Keep the files somewhere you can find them, and check each download actually finished before moving on.</li>
             </ol>
             <p class="note">If you cannot log in at all, that is not a dead end. Go back a section: the password reset test tells you who can, and your hosting company's support chat can reset access for the account holder. Helping with a hacked site is a normal request for them, they deal with it every day.</p>
           </div>
@@ -533,6 +533,7 @@ header .rule{
             <ol>
               <li>Find your hosting company's name on the renewal receipts in your email, then go to their website and sign in. The lost password link works the same way as anywhere else.</li>
               <li>If the account is in someone else's name, ask them to either hand it over or sit with you for an hour. Both are reasonable asks.</li>
+              <li>While you are talking to your hosting company, ask one more question: what dated backups do they hold? A copy from before the trouble started can shorten the whole job. Do not restore one blindly, because the hole that let this in would come back with it, but knowing it exists is worth a lot.</li>
             </ol>
             <p class="note">Stuck at this step with no route to either login? This is the earliest sensible hand-over point. Everything you have learned so far, who holds what, is exactly what a professional needs on day one.</p>
           </div>
@@ -554,7 +555,7 @@ header .rule{
             <ol>
               <li>Click <span class="path">Pages</span>, open your home page with <span class="path">Edit</span>, and look for a block of links you never added, usually all together in one lump.</li>
               <li>If you can see the block, delete it, click <span class="path">Update</span>, and re-run the source check to confirm the count fell to nothing.</li>
-              <li>If you cannot see it in the editor, stop looking. It is buried in the site's code files, and editing those by hand is the one thing in this guide a beginner should not do. Go to step 4: the scan finds the file for you, and its clean-up buttons do the deleting safely.</li>
+              <li>If you cannot see it in the editor, stop looking. It is buried in the site's code files, and editing those by hand is the one thing in this guide a beginner should not do. Go to step 4: the scan finds the file for you, and can repair known files with clean official copies.</li>
             </ol>
           </div>
         </details>
@@ -569,9 +570,11 @@ header .rule{
               <li>Click <span class="path">Plugins</span>, then <span class="path">Add New Plugin</span>, and search for <span class="mark">Wordfence</span>. On <strong>Wordfence Security</strong>, click <span class="path">Install Now</span>, then <span class="path">Activate</span>.</li>
               <li>It will ask you to get a free licence. Follow it: enter your email address, and click the link in the email they send. Choose the free option throughout, you do not need the paid one.</li>
               <li>In the left menu click <span class="path">Wordfence</span>, then <span class="path">Scan</span>, then <span class="path">Start New Scan</span>. Let it run to the end. This can take a long time on a big site.</li>
-              <li>Read the results. Lines marked critical that say a file contains malicious code, or an unknown file sits where it should not, are what you are after. Use the <span class="path">Delete all deletable files</span> button, or <span class="path">Delete file</span> line by line. Your backup from step 1 is your safety net.</li>
+              <li>Read the results, and save or screenshot them before doing anything else. Lines marked critical that say a file contains malicious code, or an unknown file sits where it should not, are what you are after.</li>
+              <li>Where Wordfence offers a <span class="path">Repair</span> option, that is the safe button: it replaces a known WordPress, plugin or theme file with an official clean copy. Use it freely.</li>
+              <li><strong>Do not use the delete-everything button.</strong> A scanner cannot always tell malicious code from old or customised code that your site genuinely uses, and deleting everything it flags can break the site. For any file it cannot repair, or anything you do not understand, stop and show the saved report to your hosting company or whoever cleans the site.</li>
             </ol>
-            <p class="note">If the results screen frightens you or you are not sure what a line means, stop and hand over here rather than guessing. Handing someone a finished scan report is genuinely useful work; you have done the diagnosis for them.</p>
+            <p class="note">If the results screen frightens you or you are not sure what a line means, stop and hand over here rather than guessing. A finished scan report is genuinely useful work; you have done the diagnosis for them.</p>
           </div>
         </details>
       </li>
@@ -601,7 +604,9 @@ header .rule{
               <li>Click your own name, scroll to <span class="path">Set New Password</span>, click it, and let it generate a strong one. Save it somewhere safe, then click <span class="path">Update Profile</span>.</li>
               <li>Change your hosting control panel password the same way, on the hosting company's website.</li>
               <li>The site also has behind-the-scenes passwords, called FTP and database passwords, which live in the hosting control panel. If those words mean nothing to you, open your host's support chat and ask them to reset both. It is a routine request and takes them minutes.</li>
+              <li>One step people miss: before saving the new passwords, run a full antivirus scan on the computer you manage the site from. Stolen passwords often come from the owner's computer rather than the website, and a fresh password typed into an infected machine is stolen again the same day.</li>
             </ol>
+            <p class="note">And never send a website or hosting password in an ordinary email, to anyone. If someone helping you needs access, they should have a better way to receive it, and a separate account of their own that you can remove afterwards.</p>
           </div>
         </details>
       </li>
@@ -627,6 +632,7 @@ header .rule{
     <p>Here is the part that usually gets left out. Cleaning the site deals with today. It does not deal with why it happened.</p>
     <p>These attacks find websites running something out of date. If nothing changes about how the site is looked after, the same scan finds it again, and the whole thing repeats. Someone needs to be applying updates, and that someone has to be a real person with a real login, not a good intention.</p>
     <p>So the honest question after the cleanup is a simple one. Who is going to update this, and how often? If the answer is nobody, the fix will not hold.</p>
+    <p class="note">And a note on what this guide can honestly promise: it helps you confirm the symptom and take the safe first steps. A clean Google result or a finished scan cannot certify that every way back in has gone. The same ground is covered, more formally, in <a href="https://wordpress.org/documentation/article/faq-my-site-was-hacked/">WordPress's own hacked-site guide</a> and <a href="https://developers.google.com/search/blog/2012/12/helping-webmasters-with-hacked-sites">Google's guidance for hacked sites</a>, so you do not have to take any of it on my word alone.</p>
   </section>
 
   <section>
