@@ -1,0 +1,653 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Links you cannot see</title>
+<meta name="description" content="A plain guide for business owners: check your website for hidden spam links in one minute, and fix it click by click.">
+<link rel="canonical" href="https://jscworkshop.co.uk/websitefixguide/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Links you cannot see">
+<meta property="og:description" content="Someone may have put links on your website that visitors never see, but search engines do. How to check in one minute, and how to put it right.">
+<meta property="og:url" content="https://jscworkshop.co.uk/websitefixguide/">
+<meta property="og:image" content="https://jscworkshop.co.uk/og.jpg">
+<style>
+/* ---------------------------------------------------------------
+   Palette: printed guidance, not security marketing. The whole job
+   of this page is to be believed by someone who has every reason to
+   assume it is a scam, so the ground is paper, the ink is calm, and
+   the only bright thing on the page is a highlighter mark on the
+   words the reader has to type. Nothing shouts.
+   Amber is reserved for "look here". Rust appears exactly once.
+---------------------------------------------------------------- */
+:root{
+  --paper:#F6F8F6;
+  --card:#FFFFFF;
+  --ink:#16211F;
+  --ink-soft:#57645F;
+  --ink-faint:#8A948F;
+  --rule:#DCE2DE;
+  --rule-strong:#B9C3BE;
+  --accent:#15594A;
+  --accent-soft:#E4EDE9;
+  --mark:#F0DFAE;
+  --mark-ink:#4A3A10;
+  --alarm:#9E4127;
+  --alarm-soft:#F6E4DE;
+  --shadow:0 1px 2px rgba(22,33,31,.06), 0 8px 24px -16px rgba(22,33,31,.28);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#121917;
+    --card:#182220;
+    --ink:#E8EEEA;
+    --ink-soft:#A3B0AB;
+    --ink-faint:#77837E;
+    --rule:#2A3733;
+    --rule-strong:#3D4C47;
+    --accent:#63C0A6;
+    --accent-soft:#1D2E2A;
+    --mark:#54451C;
+    --mark-ink:#F6E6BC;
+    --alarm:#E08163;
+    --alarm-soft:#33201A;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px -16px rgba(0,0,0,.7);
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#121917;
+  --card:#182220;
+  --ink:#E8EEEA;
+  --ink-soft:#A3B0AB;
+  --ink-faint:#77837E;
+  --rule:#2A3733;
+  --rule-strong:#3D4C47;
+  --accent:#63C0A6;
+  --accent-soft:#1D2E2A;
+  --mark:#54451C;
+  --mark-ink:#F6E6BC;
+  --alarm:#E08163;
+  --alarm-soft:#33201A;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px -16px rgba(0,0,0,.7);
+}
+
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:Georgia,"Iowan Old Style","Palatino Linotype",Palatino,serif;
+  font-size:18px;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+
+.wrap{
+  max-width:44rem;
+  margin:0 auto;
+  padding:clamp(2rem,6vw,4.5rem) clamp(1.15rem,5vw,2rem) 5rem;
+  display:flex;
+  flex-direction:column;
+  gap:3.25rem;
+}
+
+/* --- typographic roles ------------------------------------------------ */
+h1,h2,h3,.eyebrow,.step-n,.kbd,.chip,.mono,summary{
+  font-family:"Segoe UI","Helvetica Neue",system-ui,-apple-system,Arial,sans-serif;
+}
+h1{
+  margin:0;
+  font-size:clamp(2.1rem,6.5vw,3.05rem);
+  line-height:1.08;
+  font-weight:700;
+  letter-spacing:-.022em;
+  text-wrap:balance;
+}
+h2{
+  margin:0;
+  font-size:clamp(1.3rem,3.4vw,1.6rem);
+  line-height:1.2;
+  font-weight:700;
+  letter-spacing:-.014em;
+  text-wrap:balance;
+}
+h3{
+  margin:0;
+  font-size:1.02rem;
+  font-weight:700;
+  letter-spacing:-.005em;
+}
+p{margin:0}
+a{color:var(--accent);text-underline-offset:3px;text-decoration-thickness:1px}
+a:focus-visible,summary:focus-visible{
+  outline:2px solid var(--accent);
+  outline-offset:3px;
+  border-radius:2px;
+}
+strong{font-weight:700}
+
+.eyebrow{
+  font-size:.7rem;
+  font-weight:700;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--accent);
+}
+.lede{
+  font-size:clamp(1.08rem,2.4vw,1.24rem);
+  line-height:1.5;
+  color:var(--ink-soft);
+}
+.byline{
+  font-family:"Segoe UI","Helvetica Neue",system-ui,sans-serif;
+  font-size:.82rem;
+  color:var(--ink-faint);
+  letter-spacing:.01em;
+}
+.mono{
+  font-family:ui-monospace,"Cascadia Mono",Consolas,"SF Mono",Menlo,monospace;
+  font-size:.88em;
+}
+
+/* the highlighter: the page's one bright idea, used only on things the
+   reader must type or look for. It echoes what the fix does, which is
+   make hidden text visible. */
+.mark{
+  background:var(--mark);
+  color:var(--mark-ink);
+  padding:.08em .3em;
+  border-radius:2px;
+  font-family:ui-monospace,"Cascadia Mono",Consolas,"SF Mono",Menlo,monospace;
+  font-size:.86em;
+  font-weight:600;
+}
+
+section{display:flex;flex-direction:column;gap:1.1rem}
+section > p + p{margin-top:-.15rem}
+
+header{display:flex;flex-direction:column;gap:1rem}
+header .rule{
+  height:3px;
+  width:4.5rem;
+  background:var(--accent);
+  border-radius:2px;
+}
+
+/* --- the self-check panel: the most important thing on the page ------- */
+.check{
+  background:var(--card);
+  border:1px solid var(--rule-strong);
+  border-radius:4px;
+  box-shadow:var(--shadow);
+  padding:clamp(1.25rem,4vw,1.9rem);
+  display:flex;
+  flex-direction:column;
+  gap:1.15rem;
+}
+.check ol{
+  margin:0;
+  padding-left:1.35rem;
+  display:flex;
+  flex-direction:column;
+  gap:.85rem;
+}
+.check li{padding-left:.2rem}
+.kbd{
+  display:inline-block;
+  background:var(--paper);
+  border:1px solid var(--rule-strong);
+  border-bottom-width:2px;
+  border-radius:4px;
+  padding:.08em .42em;
+  font-size:.78rem;
+  font-weight:600;
+  letter-spacing:.02em;
+  white-space:nowrap;
+  color:var(--ink);
+}
+.check .outcome{
+  border-top:1px solid var(--rule);
+  padding-top:1.1rem;
+  color:var(--ink-soft);
+  font-size:.95rem;
+}
+.note{
+  font-size:.9rem;
+  color:var(--ink-faint);
+}
+
+/* --- impact list ------------------------------------------------------ */
+.impacts{
+  list-style:none;
+  margin:0;
+  padding:0;
+  display:flex;
+  flex-direction:column;
+  gap:1.4rem;
+}
+.impacts li{
+  display:flex;
+  flex-direction:column;
+  gap:.35rem;
+  padding-left:1.1rem;
+  border-left:2px solid var(--rule-strong);
+}
+.impacts li.worst{border-left-color:var(--alarm)}
+.chip{
+  align-self:flex-start;
+  font-size:.66rem;
+  font-weight:700;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:var(--alarm);
+  background:var(--alarm-soft);
+  border-radius:2px;
+  padding:.22em .5em;
+}
+
+/* --- who controls what ------------------------------------------------ */
+.diagram{overflow-x:auto;padding:.25rem 0}
+.diagram svg{display:block;min-width:30rem;width:100%;height:auto}
+
+/* --- ordered fix steps: numbered because the order genuinely matters -- */
+.steps{
+  list-style:none;
+  margin:0;
+  padding:0;
+  display:flex;
+  flex-direction:column;
+  gap:1.5rem;
+  counter-reset:step;
+}
+.steps > li{
+  counter-increment:step;
+  display:grid;
+  grid-template-columns:2.1rem 1fr;
+  gap:.35rem 1rem;
+  align-items:baseline;
+}
+.steps > li::before{
+  content:counter(step);
+  font-family:"Segoe UI","Helvetica Neue",system-ui,sans-serif;
+  font-size:.82rem;
+  font-weight:700;
+  color:var(--accent);
+  background:var(--accent-soft);
+  border-radius:3px;
+  text-align:center;
+  padding:.18rem 0;
+  font-variant-numeric:tabular-nums;
+}
+.steps h3{grid-column:2}
+.steps p{grid-column:2;color:var(--ink-soft);font-size:.97rem}
+.steps .keystep{
+  grid-column:2;
+  background:var(--alarm-soft);
+  border-left:2px solid var(--alarm);
+  padding:.75rem .95rem;
+  border-radius:0 3px 3px 0;
+  color:var(--ink);
+  font-size:.95rem;
+}
+
+/* --- click-by-click: the exact-clicks panels under each step ---------- */
+.how{
+  grid-column:2;
+  background:var(--card);
+  border:1px solid var(--rule);
+  border-radius:4px;
+}
+.how summary{
+  cursor:pointer;
+  list-style:none;
+  padding:.6rem .95rem;
+  font-size:.82rem;
+  font-weight:700;
+  color:var(--accent);
+  letter-spacing:.02em;
+  user-select:none;
+}
+.how summary::-webkit-details-marker{display:none}
+.how summary::before{
+  content:"+";
+  display:inline-block;
+  width:1.1rem;
+  font-weight:700;
+}
+.how[open] summary::before{content:"\2212"}
+.how[open] summary{border-bottom:1px solid var(--rule)}
+.how .howbody{
+  padding:.9rem .95rem 1.05rem;
+  display:flex;
+  flex-direction:column;
+  gap:.7rem;
+}
+.how ol{
+  margin:0;
+  padding-left:1.3rem;
+  display:flex;
+  flex-direction:column;
+  gap:.55rem;
+  font-size:.93rem;
+  color:var(--ink-soft);
+}
+.how li{padding-left:.15rem}
+.how .path{
+  font-family:"Segoe UI","Helvetica Neue",system-ui,sans-serif;
+  font-size:.85em;
+  font-weight:600;
+  color:var(--ink);
+  white-space:nowrap;
+}
+.how .note{margin:0}
+
+/* --- the safety line that holds the whole fix section ----------------- */
+.safety{
+  background:var(--accent-soft);
+  border-left:2px solid var(--accent);
+  border-radius:0 3px 3px 0;
+  padding:.85rem 1rem;
+  font-size:.95rem;
+  color:var(--ink);
+}
+
+/* --- closing ---------------------------------------------------------- */
+.closing{
+  border-top:1px solid var(--rule);
+  padding-top:2rem;
+  display:flex;
+  flex-direction:column;
+  gap:1rem;
+}
+.contact{
+  font-family:"Segoe UI","Helvetica Neue",system-ui,sans-serif;
+  font-size:1rem;
+  display:flex;
+  flex-direction:column;
+  gap:.3rem;
+}
+.contact .who{font-weight:700}
+
+@media (prefers-reduced-motion:reduce){
+  *{animation:none !important;transition:none !important}
+}
+
+@media print{
+  body{background:#fff;color:#000;font-size:11pt}
+  .wrap{max-width:none;padding:0;gap:1.6rem}
+  .check,.steps > li::before{box-shadow:none}
+  .check{border:1pt solid #666}
+  a{color:#000}
+  h2{page-break-after:avoid}
+  .steps > li,.impacts li{page-break-inside:avoid}
+  .how{border:1pt solid #999}
+  .how summary{display:none}
+  .how .howbody{display:flex !important}
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <header>
+    <span class="eyebrow">A plain guide for business owners</span>
+    <h1>Links you cannot see</h1>
+    <p class="lede">Someone may have put links or pages on your website that visitors never see, but search engines do. Here is how to check in one minute, what it costs you, and how to put it right, one click at a time.</p>
+    <div class="rule"></div>
+    <p class="byline">Written by Jordan Crombie, JSC Workshop, Bilston. Free to copy and pass on.</p>
+  </header>
+
+  <section>
+    <h2>What has happened</h2>
+    <p>Links to other people's websites have been added to your pages, usually gambling or pharmacy sites. They are styled so that nothing appears on screen. Your website looks completely normal to you and to your customers. A heavier version of the same thing adds whole pages to your website, hundreds of them, wearing your logo and your menu.</p>
+    <p>Search engines do not look at the screen. They read the code behind the page, and there the links are perfectly visible. That is the whole point of it. Whoever did this is being paid to place links on real, established business websites, because a link from a genuine local firm is worth something to them.</p>
+    <p><strong>Nobody picked you.</strong> This is done by software that works its way across the internet looking for sites running an out of date part, and it happens to thousands of small business websites. It is not a reflection on you, and it is not a reflection on whoever built your site.</p>
+  </section>
+
+  <section>
+    <h2>Check it yourself, in one minute</h2>
+    <p>Do not take anyone's word for this, including mine. You can see it with your own eyes, and you do not need to install anything.</p>
+
+    <p>Start with this one, because it is the most reliable and the hardest to get wrong. It asks Google directly what it has stored under your name.</p>
+
+    <div class="check">
+      <h3>The Google check</h3>
+      <ol>
+        <li>Go to Google and search for this, putting your own address where the example is:<br>
+          <span class="mark">site:yourbusiness.co.uk casino</span><br>
+          <span class="note">Type it exactly like that: the word <span class="mono">site</span>, a colon, your address with no spaces, then a space, then the word.</span></li>
+        <li>Then run it again swapping <span class="mark">casino</span> for <span class="mark">slots</span>, <span class="mark">gambling</span>, and <span class="mark">viagra</span>.</li>
+      </ol>
+      <p class="outcome">A clean site returns nothing for any of these. If Google shows you pages on your own website about casinos, in any language, that is the problem, and you are looking at exactly what a customer would find. This works on a phone, needs nothing installed, and cannot be fooled by anything hidden.</p>
+    </div>
+
+    <p>The second check looks inside the page itself. It catches links that are hidden rather than published as pages, so it is worth doing as well, but it is fiddlier and one wrong step gives a falsely clean result.</p>
+
+    <div class="check">
+      <h3>The source check</h3>
+      <ol>
+        <li>Open your website in Chrome or Edge, <strong>on a computer</strong>. This will not work on a phone.</li>
+        <li>Hold <span class="kbd">Ctrl</span> and press <span class="kbd">U</span>. On a Mac, hold <span class="kbd">Option</span> and <span class="kbd">Command</span> and press <span class="kbd">U</span>. A tab of code opens.<br><strong>Check the address bar now reads <span class="mark">view-source:</span> at the front.</strong> If it does not, the next step searches the wrong thing and will wrongly tell you the site is clean.</li>
+        <li>Hold <span class="kbd">Ctrl</span> and press <span class="kbd">F</span>, type <span class="mark">casino</span> and press <span class="kbd">Enter</span>. The browser counts them for you.</li>
+      </ol>
+      <p class="outcome">A clean page finds nothing. A hit is usually dozens. Run it again with <span class="mark">slots</span>, <span class="mark">viagra</span>, <span class="mark">payday</span> and <span class="mark">poker</span>. A caution on short words like <span class="mark">bet</span> and <span class="mark">spin</span>: they hide inside ordinary English, so "better" matches <span class="mark">bet</span> and a booking page may say "book a slot". One or two of those are innocent. Thirty matches naming websites you have never heard of are not.</p>
+    </div>
+
+    <p class="note">If either check finds something, do not panic and do not rush. Nothing is on fire. It has most likely been there for months, and an hour spent doing this properly beats ten minutes spent doing it twice. If the checks disagree, believe the one that found something: hidden content is designed to be missed, so finding nothing is never proof on its own.</p>
+  </section>
+
+  <section>
+    <h2>What it actually costs you</h2>
+    <ul class="impacts">
+      <li class="worst">
+        <span class="chip">The one that matters most</span>
+        <h3>Whoever added the links can still get in</h3>
+        <p>These attacks almost always leave a way back in, hidden in a file somewhere. Today it is being used for gambling links because that is what pays this month. The same access could be used to read what people send through your contact form, to send your visitors somewhere else, or to lock you out of your own site later. This is why deleting the links on their own does not fix it.</p>
+      </li>
+      <li>
+        <h3>Search engines may stop showing you for your own trade</h3>
+        <p>Google can decide a page it does not trust should not rank, and it can start associating your site with gambling instead of your actual work. It may also put a line under your search result saying the site may be hacked. Customers looking for you may simply not find you.</p>
+      </li>
+      <li>
+        <h3>Customers can land on pages that are not yours</h3>
+        <p>The heavier version of this puts whole articles on your website, in another language, about online casinos, wearing your logo and your menu. Someone checking you out before they book can end up reading one.</p>
+      </li>
+      <li>
+        <h3>Your hosting company may take the site down</h3>
+        <p>Hosts run their own scans, and a site serving spam can be suspended with very little warning. Then the website is gone until it is cleaned up.</p>
+      </li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Before you fix anything, find out what you control</h2>
+    <p>Three separate things are easy to mistake for one thing, and they can be held by three different people. If someone built your site years ago, some of these may still be in their name.</p>
+
+    <div class="diagram">
+      <svg viewBox="0 0 640 168" role="img" aria-label="Three separate things: the domain, held at a registrar; the hosting, where the files live; and the site itself, the login that manages the pages.">
+        <g font-family="Segoe UI, Helvetica Neue, system-ui, sans-serif">
+          <rect x="1" y="26" width="198" height="112" rx="4" fill="var(--card)" stroke="var(--rule-strong)"/>
+          <rect x="221" y="26" width="198" height="112" rx="4" fill="var(--card)" stroke="var(--rule-strong)"/>
+          <rect x="441" y="26" width="198" height="112" rx="4" fill="var(--card)" stroke="var(--rule-strong)"/>
+
+          <line x1="199" y1="82" x2="221" y2="82" stroke="var(--rule-strong)" stroke-width="1"/>
+          <line x1="419" y1="82" x2="441" y2="82" stroke="var(--rule-strong)" stroke-width="1"/>
+
+          <text x="20" y="58" font-size="12" font-weight="700" letter-spacing="1.6" fill="var(--accent)">THE DOMAIN</text>
+          <text x="20" y="84" font-size="14.5" fill="var(--ink)">Your address itself</text>
+          <text x="20" y="105" font-size="12.5" fill="var(--ink-soft)">Rented yearly from a registrar.</text>
+          <text x="20" y="122" font-size="12.5" fill="var(--ink-soft)">Lose it and the email goes too.</text>
+
+          <text x="240" y="58" font-size="12" font-weight="700" letter-spacing="1.6" fill="var(--accent)">THE HOSTING</text>
+          <text x="240" y="84" font-size="14.5" fill="var(--ink)">Where the files sit</text>
+          <text x="240" y="105" font-size="12.5" fill="var(--ink-soft)">A separate bill, often from</text>
+          <text x="240" y="122" font-size="12.5" fill="var(--ink-soft)">a different company.</text>
+
+          <text x="460" y="58" font-size="12" font-weight="700" letter-spacing="1.6" fill="var(--accent)">THE SITE</text>
+          <text x="460" y="84" font-size="14.5" fill="var(--ink)">The login for the pages</text>
+          <text x="460" y="105" font-size="12.5" fill="var(--ink-soft)">Usually WordPress. This is</text>
+          <text x="460" y="122" font-size="12.5" fill="var(--ink-soft)">where the links were added.</text>
+        </g>
+      </svg>
+    </div>
+
+    <h3>Two ways to find out, neither of them technical</h3>
+    <p><strong>Search your email for renewal receipts.</strong> Registrars and hosting companies send one every year. Whoever's name and card is on those receipts is who controls it. If you cannot find any, someone else is paying, and that is worth knowing on its own.</p>
+    <p><strong>Try to reset your own password.</strong> Go to your website address followed by <span class="mark">/wp-admin</span> and click the lost password link. If the reset email arrives in your inbox, you control the site. If it does not, you do not, and that is your answer.</p>
+    <p class="note">If it turns out the domain is registered to a builder you have lost touch with, deal with that first. It matters more than the links do, because when a domain lapses it takes the website and every address at your own name with it.</p>
+  </section>
+
+  <section>
+    <h2>How to fix it</h2>
+    <p>In this order, because the order matters. Each step below has a plain description, and under it an exact list of where to click, written for someone who has never been behind their own website. Read the step, then open the clicks.</p>
+    <p class="note">These steps assume WordPress because most affected sites run it, but this is not a WordPress-only problem. Any site with a login and software behind it can be attacked the same way. If yours is built on something else, the steps still apply in the same order; only the names of the tools change.</p>
+
+    <div class="safety"><strong>The one rule that makes this safe:</strong> do step 1 first, and after that nothing you do here can lose your website, because you are holding a complete copy. And if any step defeats you, stop there. A half-finished fix plus a backup is a perfectly good place to hand over from, and the finding-out is already done.</div>
+
+    <ol class="steps">
+      <li>
+        <h3>Take a full backup first</h3>
+        <p>A backup is a complete copy of the website, downloaded to your own computer, so that a mistake later costs you nothing. Do this before touching anything at all.</p>
+        <details class="how">
+          <summary>Show me exactly where to click</summary>
+          <div class="howbody">
+            <ol>
+              <li>Log in to your site: go to your website address followed by <span class="mark">/wp-admin</span> and sign in. Everything below happens in the menu down the left-hand side.</li>
+              <li>Click <span class="path">Plugins</span>, then <span class="path">Add New Plugin</span>. In the search box at the top right, type <span class="mark">UpdraftPlus</span>.</li>
+              <li>On the card called <strong>UpdraftPlus: WP Backup &amp; Migration Plugin</strong>, click <span class="path">Install Now</span>, wait, then click <span class="path">Activate</span>.</li>
+              <li>Click <span class="path">Settings</span>, then <span class="path">UpdraftPlus Backups</span>. Click the big <span class="path">Backup Now</span> button, leave both ticked boxes as they are, and click <span class="path">Backup Now</span> again. A big site can take a while. That is normal, leave the tab open.</li>
+              <li>When it finishes, scroll to <strong>Existing backups</strong>. You will see a row of buttons: <span class="path">Database</span>, <span class="path">Plugins</span>, <span class="path">Themes</span>, <span class="path">Uploads</span>, <span class="path">Others</span>. Click each one in turn, then click <span class="path">Download to your computer</span>. Keep the files somewhere you can find them.</li>
+            </ol>
+            <p class="note">If you cannot log in at all, that is not a dead end. Go back a section: the password reset test tells you who can, and your hosting company's support chat can reset access for the account holder. Helping with a hacked site is a normal request for them, they deal with it every day.</p>
+          </div>
+        </details>
+      </li>
+      <li>
+        <h3>Get proper access</h3>
+        <p>You want two logins before going further: the site's administrator login from step 1, and the login for your hosting control panel. Cleaning up without hosting access is working with one hand.</p>
+        <details class="how">
+          <summary>Show me exactly where to click</summary>
+          <div class="howbody">
+            <ol>
+              <li>Find your hosting company's name on the renewal receipts in your email, then go to their website and sign in. The lost password link works the same way as anywhere else.</li>
+              <li>If the account is in someone else's name, ask them to either hand it over or sit with you for an hour. Both are reasonable asks.</li>
+            </ol>
+            <p class="note">Stuck at this step with no route to either login? This is the earliest sensible hand-over point. Everything you have learned so far, who holds what, is exactly what a professional needs on day one.</p>
+          </div>
+        </details>
+      </li>
+      <li>
+        <h3>Remove what was added</h3>
+        <p>What you are removing depends on which check found it. Fake pages are easy to spot and delete in bulk. Hidden links are harder to find by hand, and it is completely fine to run the scan in step 4 first and let it point at the file they live in, then come back here.</p>
+        <details class="how">
+          <summary>Show me exactly where to click</summary>
+          <div class="howbody">
+            <p><strong>If the Google check found fake pages:</strong></p>
+            <ol>
+              <li>In the left menu click <span class="path">Posts</span>, then <span class="path">All Posts</span>. Fake pages usually sit here as posts you never wrote, often hundreds of them, often about casinos, sometimes in another language. Also check <span class="path">Pages</span> the same way.</li>
+              <li>Click <span class="path">Screen Options</span> at the very top right, set the number of items to 200, and click <span class="path">Apply</span>, so you can clear them in big batches.</li>
+              <li>Tick the box at the top of the list to select the whole page of posts, untick anything that is genuinely yours, then open the <span class="path">Bulk actions</span> menu, choose <span class="path">Move to Bin</span>, and click <span class="path">Apply</span>. Repeat until the strangers are gone, then empty the bin.</li>
+            </ol>
+            <p><strong>If the source check found hidden links:</strong></p>
+            <ol>
+              <li>Click <span class="path">Pages</span>, open your home page with <span class="path">Edit</span>, and look for a block of links you never added, usually all together in one lump.</li>
+              <li>If you can see the block, delete it, click <span class="path">Update</span>, and re-run the source check to confirm the count fell to nothing.</li>
+              <li>If you cannot see it in the editor, stop looking. It is buried in the site's code files, and editing those by hand is the one thing in this guide a beginner should not do. Go to step 4: the scan finds the file for you, and its clean-up buttons do the deleting safely.</li>
+            </ol>
+          </div>
+        </details>
+      </li>
+      <li>
+        <h3>Find the way back in</h3>
+        <div class="keystep"><strong>This is the step people skip, and it is why the links come back a fortnight later.</strong> Run a security scan across the whole site to find the file that was left behind. Removing the links without closing the door means doing all of this again.</div>
+        <details class="how">
+          <summary>Show me exactly where to click</summary>
+          <div class="howbody">
+            <ol>
+              <li>Click <span class="path">Plugins</span>, then <span class="path">Add New Plugin</span>, and search for <span class="mark">Wordfence</span>. On <strong>Wordfence Security</strong>, click <span class="path">Install Now</span>, then <span class="path">Activate</span>.</li>
+              <li>It will ask you to get a free licence. Follow it: enter your email address, and click the link in the email they send. Choose the free option throughout, you do not need the paid one.</li>
+              <li>In the left menu click <span class="path">Wordfence</span>, then <span class="path">Scan</span>, then <span class="path">Start New Scan</span>. Let it run to the end. This can take a long time on a big site.</li>
+              <li>Read the results. Lines marked critical that say a file contains malicious code, or an unknown file sits where it should not, are what you are after. Use the <span class="path">Delete all deletable files</span> button, or <span class="path">Delete file</span> line by line. Your backup from step 1 is your safety net.</li>
+            </ol>
+            <p class="note">If the results screen frightens you or you are not sure what a line means, stop and hand over here rather than guessing. Handing someone a finished scan report is genuinely useful work; you have done the diagnosis for them.</p>
+          </div>
+        </details>
+      </li>
+      <li>
+        <h3>Update everything</h3>
+        <p>WordPress itself, every plugin, and the theme. These attacks get in through out of date parts, so this step is what closes the original hole.</p>
+        <details class="how">
+          <summary>Show me exactly where to click</summary>
+          <div class="howbody">
+            <ol>
+              <li>In the left menu click <span class="path">Dashboard</span>, then <span class="path">Updates</span>.</li>
+              <li>If WordPress itself offers an update, run that first and let it finish.</li>
+              <li>Under plugins, click <span class="path">Select All</span>, then <span class="path">Update Plugins</span>. Do the same for themes.</li>
+            </ol>
+            <p class="note">A paid theme will quietly stop updating when its licence runs out, which leaves known holes sitting open for years. If your theme shows an update that will not install, or has not updated in years, check whether it is still paid for.</p>
+          </div>
+        </details>
+      </li>
+      <li>
+        <h3>Change every password</h3>
+        <p>Site administrator, hosting, and any other accounts on the site. Whoever got in may have collected the old ones, so this only counts if it happens after the clean-up, not before.</p>
+        <details class="how">
+          <summary>Show me exactly where to click</summary>
+          <div class="howbody">
+            <ol>
+              <li>Click <span class="path">Users</span>, then <span class="path">All Users</span>. Look down the list for any administrator you do not recognise. Sometimes one gets added. Delete any stranger.</li>
+              <li>Click your own name, scroll to <span class="path">Set New Password</span>, click it, and let it generate a strong one. Save it somewhere safe, then click <span class="path">Update Profile</span>.</li>
+              <li>Change your hosting control panel password the same way, on the hosting company's website.</li>
+              <li>The site also has behind-the-scenes passwords, called FTP and database passwords, which live in the hosting control panel. If those words mean nothing to you, open your host's support chat and ask them to reset both. It is a routine request and takes them minutes.</li>
+            </ol>
+          </div>
+        </details>
+      </li>
+      <li>
+        <h3>Ask Google to look again</h3>
+        <p>Google Search Console is Google's own free tool for website owners. It tells you if Google has flagged anything, lets you ask for a fresh look now the spam is gone, and means you hear about it first if anything ever comes back.</p>
+        <details class="how">
+          <summary>Show me exactly where to click</summary>
+          <div class="howbody">
+            <ol>
+              <li>Search Google for <span class="mark">Google Search Console</span>, open it, and sign in with any Google account.</li>
+              <li>Add your website when it asks. It will then want proof you own the site, and this is the one genuinely technical moment in this guide: it asks you to change a setting at your domain or add a snippet to the site.</li>
+              <li>If the verification defeats you, skip it with a clear conscience. The site is still fixed without it, and whoever looks after your site can set it up in ten minutes.</li>
+            </ol>
+          </div>
+        </details>
+      </li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>Making sure it stays fixed</h2>
+    <p>Here is the part that usually gets left out. Cleaning the site deals with today. It does not deal with why it happened.</p>
+    <p>These attacks find websites running something out of date. If nothing changes about how the site is looked after, the same scan finds it again, and the whole thing repeats. Someone needs to be applying updates, and that someone has to be a real person with a real login, not a good intention.</p>
+    <p>So the honest question after the cleanup is a simple one. Who is going to update this, and how often? If the answer is nobody, the fix will not hold.</p>
+  </section>
+
+  <section>
+    <h2>When starting again is the better answer</h2>
+    <p>Sometimes cleaning up is the wrong call, and it is worth being straight about when.</p>
+    <p>If nobody can get into the site and whoever built it has moved on, if it has been cleaned before and it came back, or if it has sat untouched for years and realistically will again, then you are paying to patch something that will keep breaking.</p>
+    <p>It is also worth asking whether the site needs to work the way it does. A five page site for a trade business is often built on a system designed for publishing several articles a week, and that system is the part that needs constant maintenance. A simpler site with no login and no plugins cannot be broken into this way, because there is nothing to break into, and it costs almost nothing to keep running.</p>
+    <p>The test is honest and quick. <strong>Do you actually change the site yourself?</strong> If you update prices or post news most months, you need a system that lets you, and you need somebody maintaining it. If you have not touched it since it was built, you are paying maintenance on a convenience you have never used.</p>
+  </section>
+
+  <div class="closing">
+    <h2>If you would rather someone else did it</h2>
+    <p>Everything above is yours to use, whether you do it, your builder does it, or someone else does. Nothing in this guide is held back.</p>
+    <p>If you would prefer to hand it over, I am happy to take a look and tell you what I find, and what it would cost, before anything is agreed.</p>
+    <div class="contact">
+      <span class="who">Jordan Crombie, JSC Workshop</span>
+      <span><a href="mailto:jordan@jscworkshop.co.uk">jordan@jscworkshop.co.uk</a></span>
+      <span>Telephone: <a href="tel:+447912869248">07912 869248</a></span>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
