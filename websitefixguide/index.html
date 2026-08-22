@@ -465,11 +465,12 @@ header .rule{
         <li>If your site has a blog or news area, open it.</li>
       </ol>
       <p class="outcome">This sounds too obvious to be worth doing, and it is the one people skip. On some sites the business heading and menu survive while the content underneath has been replaced with casino articles, so the page still looks like yours at a glance. If you have not actually read your own news page this year, read it now.</p>
+      <p class="note">While you are here, open one or two of any odd addresses the first two checks turned up. Two things to watch for. One is a black screen with a spinner on it. The other is a gambling site filling the whole window, with your own address still in the bar and none of your website around it. Either one is a particular kind, and it has its own steps further down. Do not click anything inside that window.</p>
     </div>
 
     <p class="note">If any check finds something, do not panic and do not rush. Nothing is on fire. It has most likely been there for months, and an hour spent doing this properly beats ten minutes spent doing it twice. If the checks disagree, believe the one that found something: hidden content is designed to be missed, so finding nothing is never proof on its own.</p>
 
-    <p class="note"><strong>And if all four come back with nothing.</strong> That is genuinely good news and it is the likeliest reading. It is not a guarantee, and I would rather say so than pretend otherwise. There is at least one kind that hides from all four at once. It is a page marked hide from search engines, holding no links of its own, leaving your front page alone, and pulling a casino in from somebody else's server only when somebody opens it. What you can honestly say after these four checks is that the common kinds are not there.</p>
+    <p class="note"><strong>And if all four come back with nothing.</strong> That is genuinely good news and it is the likeliest reading. It is not a guarantee, and I would rather say so than pretend otherwise. There is at least one kind that hides from all four at once. It is a page marked hide from search engines, holding no links of its own, leaving your front page alone, and pulling a casino in from somebody else's server only when somebody opens it. What you can honestly say after these four checks is that the common kinds are not there. If you have any reason to think that is what you are looking at, the steps for it are with the others below.</p>
   </section>
 
   <section>
@@ -608,6 +609,17 @@ header .rule{
 
             <p><strong>If it looks like somebody already half cleaned it:</strong></p>
             <p class="note">If your sitemap lists thousands of addresses but the ones you open give a not found error, someone has removed the pages and left the mess behind. Look at what that error page itself says: if it carries a casino heading rather than your own, the error template was replaced too, and it is still theirs. Treat the site as still compromised and carry on through the rest of these steps. Your host or whoever built the site may have done a partial clean without telling you, so it is worth asking them before you assume the worst.</p>
+
+            <p><strong>If an address of yours opens a black screen, or a casino filling the whole window:</strong></p>
+            <p class="note">This is the hardest kind to get rid of and the easiest to recognise once you have seen it. The address is yours and your name is still in the tab at the top. What loads is somebody else's gambling site, pulled in live from another server as the page opens. The giveaway is that none of your own website is around it: no header, no menu, no footer, just the one thing edge to edge.</p>
+            <ol>
+              <li>Confirm it, on a computer. Open the address, hold <span class="kbd">Ctrl</span> and press <span class="kbd">U</span> to see the code behind it. A normal page of yours runs to thousands of lines. These run to about twenty, and holding <span class="kbd">Ctrl</span> and pressing <span class="kbd">F</span> for <span class="mark">iframe</span> finds a single line pointing at a web address you have never heard of, with your own domain written on the end of it.</li>
+              <li>Start in <span class="path">Posts</span>, then <span class="path">All Posts</span>, and in <span class="path">Pages</span>. The address usually still has a post behind it, named after whatever the tab says. Delete it and empty the bin.</li>
+              <li><strong>Now open the address again.</strong> If you get a page not found, that part is done. If the casino is still there, the post was not what was serving it, and something added to your site's code is answering that address on its own.</li>
+              <li>Either way, do the scan in step 4. Do not skip it on this one. Content was not simply added here, code was, and deleting a post never closes that.</li>
+            </ol>
+            <p class="outcome">Two things worth knowing before you judge how bad it is. Some of these pages are marked hide from search engines and some are not, so Google may show you nothing at all while they are sitting there serving perfectly well. And whoever put it there is not paying for the gambling site you can see: your address is passed along to it, so somebody is being credited for sending your visitors on. That is why it is worth removing even if no customer has ever mentioned it.</p>
+            <p class="note"><strong>If you are handing this to someone else, give them this sentence.</strong> The page bypasses the theme completely, so whatever is producing it runs before the theme does. Ask them to look at must-use plugins and at anything recently changed in the plugins folder, as well as the post itself. That one sentence will save them an hour, and if you cannot get it to stop yourself, this is the sensible point to hand over. It is not a failure on your part. This kind defeats every check on this page except opening it and looking.</p>
 
             <p><strong>If you found hidden links in the code:</strong></p>
             <ol>
